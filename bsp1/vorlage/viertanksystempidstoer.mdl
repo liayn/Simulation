@@ -1,0 +1,2551 @@
+Model {
+  Name			  "viertanksystempidstoer"
+  Version		  3.00
+  SimParamPage		  "Solver"
+  SampleTimeColors	  off
+  InvariantConstants	  off
+  WideVectorLines	  off
+  ShowLineWidths	  off
+  ShowPortDataTypes	  off
+  StartTime		  "0.0"
+  StopTime		  "1800"
+  SolverMode		  "Auto"
+  Solver		  "ode45"
+  RelTol		  "1e-6"
+  AbsTol		  "1e-6"
+  Refine		  "1"
+  MaxStep		  "auto"
+  InitialStep		  "auto"
+  FixedStep		  "0.01"
+  MaxOrder		  5
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  SaveTime		  off
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  off
+  OutputSaveName	  "yout"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Matrix"
+  LimitMaxRows		  off
+  MaxRows		  "1000"
+  Decimation		  "1"
+  AlgebraicLoopMsg	  "warning"
+  MinStepSizeMsg	  "warning"
+  UnconnectedInputMsg	  "warning"
+  UnconnectedOutputMsg	  "warning"
+  UnconnectedLineMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  IntegerOverflowMsg	  "warning"
+  UnnecessaryDatatypeConvMsg "none"
+  Int32ToFloatConvMsg	  "warning"
+  SignalLabelMismatchMsg  "none"
+  ConsistencyChecking	  "off"
+  ZeroCross		  on
+  SimulationMode	  "normal"
+  BlockDataTips		  on
+  BlockParametersDataTip  on
+  BlockAttributesDataTip  off
+  BlockPortWidthsDataTip  off
+  BlockDescriptionStringDataTip	off
+  BlockMaskParametersDataTip off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  OptimizeBlockIOStorage  on
+  BufferReuse		  on
+  BooleanDataType	  off
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWInlineParameters	  off
+  RTWRetainRTWFile	  off
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "oneshot"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  off
+  Created		  "Thu Jun 08 07:10:41 2000"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Sun Sep 01 15:31:37 2002"
+  ModelVersionFormat	  "1.%<AutoIncrement:44>"
+  ConfigurationManager	  "none"
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "viertanksystempidstoer"
+    Location		    [8, 83, 1007, 716]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "automatic"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    AutoZoom		    on
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      Step
+      Name		      "A 4"
+      Position		      [255, 525, 285, 555]
+      Time		      "1230"
+      Before		      "0"
+      After		      "A4*0.1749"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Step
+      Name		      "A4"
+      Position		      [300, 500, 330, 530]
+      Time		      "600"
+      Before		      "A4"
+      After		      "A4*0.8251"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Fcn
+      Name		      "Fcn"
+      Position		      [340, 143, 455, 167]
+      Expr		      "A12*sqrt(2*g*u)"
+    }
+    Block {
+      BlockType		      Fcn
+      Name		      "Fcn1"
+      Position		      [340, 278, 455, 302]
+      Expr		      "A23*sqrt(2*g*u)"
+    }
+    Block {
+      BlockType		      Fcn
+      Name		      "Fcn2"
+      Position		      [340, 408, 455, 432]
+      Expr		      "A34*sqrt(2*g*u)"
+    }
+    Block {
+      BlockType		      Fcn
+      Name		      "Fcn3"
+      Position		      [310, 573, 385, 597]
+      Expr		      "sqrt(2*g*u)"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain"
+      Position		      [550, 135, 590, 175]
+      Gain		      "1/A"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain1"
+      Position		      [545, 73, 600, 117]
+      Orientation	      "left"
+      NamePlacement	      "alternate"
+      Gain		      "1e-3/60"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain2"
+      Position		      [550, 270, 590, 310]
+      Gain		      "1/A"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain3"
+      Position		      [550, 400, 590, 440]
+      Gain		      "1/A"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain4"
+      Position		      [550, 565, 590, 605]
+      Gain		      "1/A"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Limited\nIntegrator"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [180, 140, 220, 170]
+      ShowPortLabels	      off
+      MaskType		      "Limited Integrator."
+      MaskDescription	      "Limited Integrator"
+      MaskHelp		      "Implements a limited integrator with \\nan expr"
+"ession of the form:\\n\\nif(x<=lb and u<0) or (x>=ub and u>0)\\n   xdot=0\\ne"
+"lse\\n   xdot=u"
+      MaskPromptString	      "Lower bound:|Upper bound:|Initial condition:"
+      MaskStyleString	      "edit,edit,edit"
+      MaskTunableValueString  "on,on,on"
+      MaskCallbackString      "||"
+      MaskEnableString	      "on,on,on"
+      MaskVisibilityString    "on,on,on"
+      MaskInitialization      "lower_limit=@1;upper_limit=@2;X0=@3;"
+      MaskDisplay	      "plot(-1,-0.2,3.5,1.2,[0.05,1,2,2.9],[0,0,1,1]);"
+"disp(' 1/s    ')"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      MaskValueString	      "0|hmax|0"
+      System {
+	Name			"Limited\nIntegrator"
+	Location		[452, 229, 1117, 789]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"automatic"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	AutoZoom		on
+	Block {
+	  BlockType		  Inport
+	  Name			  "Inport"
+	  Position		  [25, 85, 45, 105]
+	  Port			  "1"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant"
+	  Position		  [325, 179, 395, 201]
+	  ShowName		  off
+	  Value			  "upper_limit"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  Position		  [325, 345, 390, 365]
+	  ShowName		  off
+	  Value			  "lower_limit"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  Position		  [20, 135, 40, 155]
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  Position		  [355, 260, 375, 280]
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant4"
+	  Position		  [355, 425, 375, 445]
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Integrator
+	  Name			  "Integrator"
+	  Ports			  [1, 1, 0, 0, 0]
+	  Position		  [165, 99, 200, 141]
+	  ExternalReset		  "none"
+	  InitialConditionSource  "internal"
+	  InitialCondition	  "X0"
+	  LimitOutput		  off
+	  UpperSaturationLimit	  "inf"
+	  LowerSaturationLimit	  "-inf"
+	  ShowSaturationPort	  off
+	  ShowStatePort		  off
+	  AbsoluteTolerance	  "auto"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [570, 280, 605, 315]
+	  ShowName		  off
+	  Operator		  "AND"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [490, 200, 525, 235]
+	  ShowName		  off
+	  Operator		  "OR"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator2"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [490, 360, 525, 395]
+	  ShowName		  off
+	  Operator		  "OR"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator"
+	  Position		  [415, 151, 445, 204]
+	  ShowName		  off
+	  Operator		  "<="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator1"
+	  Position		  [415, 312, 445, 368]
+	  ShowName		  off
+	  Operator		  ">="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator2"
+	  Position		  [415, 231, 445, 284]
+	  ShowName		  off
+	  Operator		  "<="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator3"
+	  Position		  [415, 396, 445, 449]
+	  ShowName		  off
+	  Operator		  ">="
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  Position		  [325, 110, 350, 130]
+	  UpperLimit		  "upper_limit"
+	  LowerLimit		  "lower_limit"
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "Switch"
+	  Position		  [110, 80, 135, 160]
+	  Threshold		  "0.5"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Outport"
+	  Position		  [515, 110, 535, 130]
+	  Port			  "1"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  DstBlock		  "Outport"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Inport"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    DstBlock		    "Switch"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 150]
+	    Branch {
+	      DstBlock		      "Relational\noperator2"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 165]
+	      DstBlock		      "Relational\noperator3"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "Switch"
+	  SrcPort		  1
+	  DstBlock		  "Integrator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 190; -540, 0; 0, -370]
+	  DstBlock		  "Switch"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
+	  DstBlock		  "Switch"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 30]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator2"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, -35]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, 70]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator1"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, 30]
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator3"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, -40]
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator2"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, -75]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant4"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Integrator"
+	  SrcPort		  1
+	  Points		  [0, 0]
+	  Branch {
+	    DstBlock		    "Saturation"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [40, 0; 0, 45; 70, 0]
+	    Branch {
+	      Points		      [0, 160]
+	      DstBlock		      "Relational\noperator1"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "Relational\noperator"
+	      DstPort		      1
+	    }
+	  }
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Limited\nIntegrator1"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [180, 275, 220, 305]
+      ShowPortLabels	      off
+      MaskType		      "Limited Integrator."
+      MaskDescription	      "Limited Integrator"
+      MaskHelp		      "Implements a limited integrator with \\nan expr"
+"ession of the form:\\n\\nif(x<=lb and u<0) or (x>=ub and u>0)\\n   xdot=0\\ne"
+"lse\\n   xdot=u"
+      MaskPromptString	      "Lower bound:|Upper bound:|Initial condition:"
+      MaskStyleString	      "edit,edit,edit"
+      MaskTunableValueString  "on,on,on"
+      MaskCallbackString      "||"
+      MaskEnableString	      "on,on,on"
+      MaskVisibilityString    "on,on,on"
+      MaskInitialization      "lower_limit=@1;upper_limit=@2;X0=@3;"
+      MaskDisplay	      "plot(-1,-0.2,3.5,1.2,[0.05,1,2,2.9],[0,0,1,1]);"
+"disp(' 1/s    ')"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      MaskValueString	      "0|hmax|0"
+      System {
+	Name			"Limited\nIntegrator1"
+	Location		[452, 229, 1117, 789]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"automatic"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	AutoZoom		on
+	Block {
+	  BlockType		  Inport
+	  Name			  "Inport"
+	  Position		  [25, 85, 45, 105]
+	  Port			  "1"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant"
+	  Position		  [325, 179, 395, 201]
+	  ShowName		  off
+	  Value			  "upper_limit"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  Position		  [325, 345, 390, 365]
+	  ShowName		  off
+	  Value			  "lower_limit"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  Position		  [20, 135, 40, 155]
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  Position		  [355, 260, 375, 280]
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant4"
+	  Position		  [355, 425, 375, 445]
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Integrator
+	  Name			  "Integrator"
+	  Ports			  [1, 1, 0, 0, 0]
+	  Position		  [165, 99, 200, 141]
+	  ExternalReset		  "none"
+	  InitialConditionSource  "internal"
+	  InitialCondition	  "X0"
+	  LimitOutput		  off
+	  UpperSaturationLimit	  "inf"
+	  LowerSaturationLimit	  "-inf"
+	  ShowSaturationPort	  off
+	  ShowStatePort		  off
+	  AbsoluteTolerance	  "auto"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [570, 280, 605, 315]
+	  ShowName		  off
+	  Operator		  "AND"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [490, 200, 525, 235]
+	  ShowName		  off
+	  Operator		  "OR"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator2"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [490, 360, 525, 395]
+	  ShowName		  off
+	  Operator		  "OR"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator"
+	  Position		  [415, 151, 445, 204]
+	  ShowName		  off
+	  Operator		  "<="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator1"
+	  Position		  [415, 312, 445, 368]
+	  ShowName		  off
+	  Operator		  ">="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator2"
+	  Position		  [415, 231, 445, 284]
+	  ShowName		  off
+	  Operator		  "<="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator3"
+	  Position		  [415, 396, 445, 449]
+	  ShowName		  off
+	  Operator		  ">="
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  Position		  [325, 110, 350, 130]
+	  UpperLimit		  "upper_limit"
+	  LowerLimit		  "lower_limit"
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "Switch"
+	  Position		  [110, 80, 135, 160]
+	  Threshold		  "0.5"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Outport"
+	  Position		  [515, 110, 535, 130]
+	  Port			  "1"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Line {
+	  SrcBlock		  "Integrator"
+	  SrcPort		  1
+	  Points		  [0, 0]
+	  Branch {
+	    Points		    [40, 0; 0, 45; 70, 0]
+	    Branch {
+	      DstBlock		      "Relational\noperator"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 160]
+	      DstBlock		      "Relational\noperator1"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "Saturation"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Constant4"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator2"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, -75]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator3"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, -40]
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator1"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, 30]
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, 70]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator2"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, -35]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 30]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
+	  DstBlock		  "Switch"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 190; -540, 0; 0, -370]
+	  DstBlock		  "Switch"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Switch"
+	  SrcPort		  1
+	  DstBlock		  "Integrator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Inport"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    Points		    [0, 150]
+	    Branch {
+	      Points		      [0, 165]
+	      DstBlock		      "Relational\noperator3"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "Relational\noperator2"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "Switch"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  DstBlock		  "Outport"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Limited\nIntegrator2"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [180, 405, 220, 435]
+      ShowPortLabels	      off
+      MaskType		      "Limited Integrator."
+      MaskDescription	      "Limited Integrator"
+      MaskHelp		      "Implements a limited integrator with \\nan expr"
+"ession of the form:\\n\\nif(x<=lb and u<0) or (x>=ub and u>0)\\n   xdot=0\\ne"
+"lse\\n   xdot=u"
+      MaskPromptString	      "Lower bound:|Upper bound:|Initial condition:"
+      MaskStyleString	      "edit,edit,edit"
+      MaskTunableValueString  "on,on,on"
+      MaskCallbackString      "||"
+      MaskEnableString	      "on,on,on"
+      MaskVisibilityString    "on,on,on"
+      MaskInitialization      "lower_limit=@1;upper_limit=@2;X0=@3;"
+      MaskDisplay	      "plot(-1,-0.2,3.5,1.2,[0.05,1,2,2.9],[0,0,1,1]);"
+"disp(' 1/s    ')"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      MaskValueString	      "0|hmax|0"
+      System {
+	Name			"Limited\nIntegrator2"
+	Location		[452, 229, 1117, 789]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"automatic"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	AutoZoom		on
+	Block {
+	  BlockType		  Inport
+	  Name			  "Inport"
+	  Position		  [25, 85, 45, 105]
+	  Port			  "1"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant"
+	  Position		  [325, 179, 395, 201]
+	  ShowName		  off
+	  Value			  "upper_limit"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  Position		  [325, 345, 390, 365]
+	  ShowName		  off
+	  Value			  "lower_limit"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  Position		  [20, 135, 40, 155]
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  Position		  [355, 260, 375, 280]
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant4"
+	  Position		  [355, 425, 375, 445]
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Integrator
+	  Name			  "Integrator"
+	  Ports			  [1, 1, 0, 0, 0]
+	  Position		  [165, 99, 200, 141]
+	  ExternalReset		  "none"
+	  InitialConditionSource  "internal"
+	  InitialCondition	  "X0"
+	  LimitOutput		  off
+	  UpperSaturationLimit	  "inf"
+	  LowerSaturationLimit	  "-inf"
+	  ShowSaturationPort	  off
+	  ShowStatePort		  off
+	  AbsoluteTolerance	  "auto"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [570, 280, 605, 315]
+	  ShowName		  off
+	  Operator		  "AND"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [490, 200, 525, 235]
+	  ShowName		  off
+	  Operator		  "OR"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator2"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [490, 360, 525, 395]
+	  ShowName		  off
+	  Operator		  "OR"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator"
+	  Position		  [415, 151, 445, 204]
+	  ShowName		  off
+	  Operator		  "<="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator1"
+	  Position		  [415, 312, 445, 368]
+	  ShowName		  off
+	  Operator		  ">="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator2"
+	  Position		  [415, 231, 445, 284]
+	  ShowName		  off
+	  Operator		  "<="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator3"
+	  Position		  [415, 396, 445, 449]
+	  ShowName		  off
+	  Operator		  ">="
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  Position		  [325, 110, 350, 130]
+	  UpperLimit		  "upper_limit"
+	  LowerLimit		  "lower_limit"
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "Switch"
+	  Position		  [110, 80, 135, 160]
+	  Threshold		  "0.5"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Outport"
+	  Position		  [515, 110, 535, 130]
+	  Port			  "1"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  DstBlock		  "Outport"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Inport"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    DstBlock		    "Switch"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 150]
+	    Branch {
+	      DstBlock		      "Relational\noperator2"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 165]
+	      DstBlock		      "Relational\noperator3"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "Switch"
+	  SrcPort		  1
+	  DstBlock		  "Integrator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 190; -540, 0; 0, -370]
+	  DstBlock		  "Switch"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
+	  DstBlock		  "Switch"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 30]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator2"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, -35]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, 70]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator1"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, 30]
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator3"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, -40]
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator2"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, -75]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant4"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Integrator"
+	  SrcPort		  1
+	  Points		  [0, 0]
+	  Branch {
+	    DstBlock		    "Saturation"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [40, 0; 0, 45; 70, 0]
+	    Branch {
+	      Points		      [0, 160]
+	      DstBlock		      "Relational\noperator1"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "Relational\noperator"
+	      DstPort		      1
+	    }
+	  }
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Limited\nIntegrator3"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [180, 570, 220, 600]
+      ShowPortLabels	      off
+      MaskType		      "Limited Integrator."
+      MaskDescription	      "Limited Integrator"
+      MaskHelp		      "Implements a limited integrator with \\nan expr"
+"ession of the form:\\n\\nif(x<=lb and u<0) or (x>=ub and u>0)\\n   xdot=0\\ne"
+"lse\\n   xdot=u"
+      MaskPromptString	      "Lower bound:|Upper bound:|Initial condition:"
+      MaskStyleString	      "edit,edit,edit"
+      MaskTunableValueString  "on,on,on"
+      MaskCallbackString      "||"
+      MaskEnableString	      "on,on,on"
+      MaskVisibilityString    "on,on,on"
+      MaskInitialization      "lower_limit=@1;upper_limit=@2;X0=@3;"
+      MaskDisplay	      "plot(-1,-0.2,3.5,1.2,[0.05,1,2,2.9],[0,0,1,1]);"
+"disp(' 1/s    ')"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      MaskValueString	      "0|hmax|0"
+      System {
+	Name			"Limited\nIntegrator3"
+	Location		[452, 229, 1117, 789]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"automatic"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	AutoZoom		on
+	Block {
+	  BlockType		  Inport
+	  Name			  "Inport"
+	  Position		  [25, 85, 45, 105]
+	  Port			  "1"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant"
+	  Position		  [325, 179, 395, 201]
+	  ShowName		  off
+	  Value			  "upper_limit"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  Position		  [325, 345, 390, 365]
+	  ShowName		  off
+	  Value			  "lower_limit"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  Position		  [20, 135, 40, 155]
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  Position		  [355, 260, 375, 280]
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant4"
+	  Position		  [355, 425, 375, 445]
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Integrator
+	  Name			  "Integrator"
+	  Ports			  [1, 1, 0, 0, 0]
+	  Position		  [165, 99, 200, 141]
+	  ExternalReset		  "none"
+	  InitialConditionSource  "internal"
+	  InitialCondition	  "X0"
+	  LimitOutput		  off
+	  UpperSaturationLimit	  "inf"
+	  LowerSaturationLimit	  "-inf"
+	  ShowSaturationPort	  off
+	  ShowStatePort		  off
+	  AbsoluteTolerance	  "auto"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [570, 280, 605, 315]
+	  ShowName		  off
+	  Operator		  "AND"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [490, 200, 525, 235]
+	  ShowName		  off
+	  Operator		  "OR"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator2"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [490, 360, 525, 395]
+	  ShowName		  off
+	  Operator		  "OR"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator"
+	  Position		  [415, 151, 445, 204]
+	  ShowName		  off
+	  Operator		  "<="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator1"
+	  Position		  [415, 312, 445, 368]
+	  ShowName		  off
+	  Operator		  ">="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator2"
+	  Position		  [415, 231, 445, 284]
+	  ShowName		  off
+	  Operator		  "<="
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\noperator3"
+	  Position		  [415, 396, 445, 449]
+	  ShowName		  off
+	  Operator		  ">="
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  Position		  [325, 110, 350, 130]
+	  UpperLimit		  "upper_limit"
+	  LowerLimit		  "lower_limit"
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "Switch"
+	  Position		  [110, 80, 135, 160]
+	  Threshold		  "0.5"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Outport"
+	  Position		  [515, 110, 535, 130]
+	  Port			  "1"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Line {
+	  SrcBlock		  "Integrator"
+	  SrcPort		  1
+	  Points		  [0, 0]
+	  Branch {
+	    Points		    [40, 0; 0, 45; 70, 0]
+	    Branch {
+	      DstBlock		      "Relational\noperator"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 160]
+	      DstBlock		      "Relational\noperator1"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "Saturation"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Constant4"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator2"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, -75]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator3"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, -40]
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator1"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, 30]
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, 70]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator2"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, -35]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Relational\noperator"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 30]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
+	  DstBlock		  "Switch"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 190; -540, 0; 0, -370]
+	  DstBlock		  "Switch"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  DstBlock		  "Relational\noperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Switch"
+	  SrcPort		  1
+	  DstBlock		  "Integrator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Inport"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    Points		    [0, 150]
+	    Branch {
+	      Points		      [0, 165]
+	      DstBlock		      "Relational\noperator3"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "Relational\noperator2"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "Switch"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  DstBlock		  "Outport"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux"
+      Ports		      [4, 1, 0, 0, 0]
+      Position		      [65, 22, 120, 563]
+      Orientation	      "left"
+      Inputs		      "4"
+      DisplayOption	      "none"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "PID-Regler"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [745, 320, 860, 435]
+      Orientation	      "up"
+      FontSize		      18
+      ShowPortLabels	      on
+      System {
+	Name			"PID-Regler"
+	Location		[4, 83, 1024, 716]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	AutoZoom		on
+	Block {
+	  BlockType		  Inport
+	  Name			  "Istwert\nh4"
+	  Position		  [55, 203, 85, 217]
+	  FontSize		  18
+	  Port			  "1"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Sollwert\nh4"
+	  Position		  [50, 338, 80, 352]
+	  FontSize		  18
+	  Port			  "2"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Derivative
+	  Name			  "Derivative"
+	  Position		  [415, 347, 465, 383]
+	  FontSize		  18
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain5"
+	  Position		  [300, 175, 370, 225]
+	  FontSize		  18
+	  Gain			  "1/TN"
+	  SaturateOnIntegerOverflow on
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain6"
+	  Position		  [310, 337, 365, 393]
+	  FontSize		  18
+	  Gain			  "TV"
+	  SaturateOnIntegerOverflow on
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "K"
+	  Position		  [595, 275, 635, 315]
+	  FontSize		  18
+	  Gain			  "5"
+	  SaturateOnIntegerOverflow on
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Limited\nIntegrator4"
+	  Ports			  [1, 1, 0, 0, 0]
+	  Position		  [410, 178, 470, 222]
+	  FontSize		  18
+	  ShowPortLabels	  off
+	  MaskType		  "Limited Integrator."
+	  MaskDescription	  "Limited Integrator"
+	  MaskHelp		  "Implements a limited integrator with \\nan "
+"expression of the form:\\n\\nif(x<=lb and u<0) or (x>=ub and u>0)\\n   xdot=0"
+"\\nelse\\n   xdot=u"
+	  MaskPromptString	  "Lower bound:|Upper bound:|Initial condition"
+":"
+	  MaskStyleString	  "edit,edit,edit"
+	  MaskTunableValueString  "on,on,on"
+	  MaskCallbackString	  "||"
+	  MaskEnableString	  "on,on,on"
+	  MaskVisibilityString	  "on,on,on"
+	  MaskInitialization	  "lower_limit=@1;upper_limit=@2;X0=@3;"
+	  MaskDisplay		  "plot(-1,-0.2,3.5,1.2,[0.05,1,2,2.9],[0,0,1,"
+"1]);disp(' 1/s    ')"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	  MaskValueString	  "0|10|0"
+	  System {
+	    Name		    "Limited\nIntegrator4"
+	    Location		    [452, 229, 1117, 789]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "automatic"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    AutoZoom		    on
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Inport"
+	      Position		      [25, 85, 45, 105]
+	      Port		      "1"
+	      PortWidth		      "-1"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      Position		      [325, 179, 395, 201]
+	      ShowName		      off
+	      Value		      "upper_limit"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant1"
+	      Position		      [325, 345, 390, 365]
+	      ShowName		      off
+	      Value		      "lower_limit"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant2"
+	      Position		      [20, 135, 40, 155]
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant3"
+	      Position		      [355, 260, 375, 280]
+	      ShowName		      off
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant4"
+	      Position		      [355, 425, 375, 445]
+	      ShowName		      off
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "Integrator"
+	      Ports		      [1, 1, 0, 0, 0]
+	      Position		      [165, 99, 200, 141]
+	      ExternalReset	      "none"
+	      InitialConditionSource  "internal"
+	      InitialCondition	      "X0"
+	      LimitOutput	      off
+	      UpperSaturationLimit    "inf"
+	      LowerSaturationLimit    "-inf"
+	      ShowSaturationPort      off
+	      ShowStatePort	      off
+	      AbsoluteTolerance	      "auto"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator"
+	      Ports		      [2, 1, 0, 0, 0]
+	      Position		      [570, 280, 605, 315]
+	      ShowName		      off
+	      Operator		      "AND"
+	      Inputs		      "2"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator1"
+	      Ports		      [2, 1, 0, 0, 0]
+	      Position		      [490, 200, 525, 235]
+	      ShowName		      off
+	      Operator		      "OR"
+	      Inputs		      "2"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator2"
+	      Ports		      [2, 1, 0, 0, 0]
+	      Position		      [490, 360, 525, 395]
+	      ShowName		      off
+	      Operator		      "OR"
+	      Inputs		      "2"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\noperator"
+	      Position		      [415, 151, 445, 204]
+	      ShowName		      off
+	      Operator		      "<="
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\noperator1"
+	      Position		      [415, 312, 445, 368]
+	      ShowName		      off
+	      Operator		      ">="
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\noperator2"
+	      Position		      [415, 231, 445, 284]
+	      ShowName		      off
+	      Operator		      "<="
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\noperator3"
+	      Position		      [415, 396, 445, 449]
+	      ShowName		      off
+	      Operator		      ">="
+	    }
+	    Block {
+	      BlockType		      Saturate
+	      Name		      "Saturation"
+	      Position		      [325, 110, 350, 130]
+	      UpperLimit	      "upper_limit"
+	      LowerLimit	      "lower_limit"
+	    }
+	    Block {
+	      BlockType		      Switch
+	      Name		      "Switch"
+	      Position		      [110, 80, 135, 160]
+	      Threshold		      "0.5"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Outport"
+	      Position		      [515, 110, 535, 130]
+	      Port		      "1"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Line {
+	      SrcBlock		      "Integrator"
+	      SrcPort		      1
+	      Points		      [0, 0]
+	      Branch {
+		Points			[40, 0; 0, 45; 70, 0]
+		Branch {
+		  DstBlock		  "Relational\noperator"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, 160]
+		  DstBlock		  "Relational\noperator1"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		DstBlock		"Saturation"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Constant4"
+	      SrcPort		      1
+	      DstBlock		      "Relational\noperator3"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant3"
+	      SrcPort		      1
+	      DstBlock		      "Relational\noperator2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator2"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, -75]
+	      DstBlock		      "Logical\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Relational\noperator3"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, -40]
+	      DstBlock		      "Logical\nOperator2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Relational\noperator1"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, 30]
+	      DstBlock		      "Logical\nOperator2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator1"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, 70]
+	      DstBlock		      "Logical\nOperator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Relational\noperator2"
+	      SrcPort		      1
+	      Points		      [15, 0; 0, -35]
+	      DstBlock		      "Logical\nOperator1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Relational\noperator"
+	      SrcPort		      1
+	      Points		      [15, 0; 0, 30]
+	      DstBlock		      "Logical\nOperator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant2"
+	      SrcPort		      1
+	      DstBlock		      "Switch"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator"
+	      SrcPort		      1
+	      Points		      [15, 0; 0, 190; -540, 0; 0, -370]
+	      DstBlock		      "Switch"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant1"
+	      SrcPort		      1
+	      DstBlock		      "Relational\noperator1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      DstBlock		      "Relational\noperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Switch"
+	      SrcPort		      1
+	      DstBlock		      "Integrator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Inport"
+	      SrcPort		      1
+	      Points		      [15, 0]
+	      Branch {
+		Points			[0, 150]
+		Branch {
+		  Points		  [0, 165]
+		  DstBlock		  "Relational\noperator3"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Relational\noperator2"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		DstBlock		"Switch"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Saturation"
+	      SrcPort		      1
+	      DstBlock		      "Outport"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  Position		  [665, 275, 710, 315]
+	  FontSize		  18
+	  UpperLimit		  "10"
+	  LowerLimit		  "0"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum11"
+	  Ports			  [3, 1, 0, 0, 0]
+	  Position		  [530, 285, 550, 305]
+	  FontSize		  18
+	  IconShape		  "round"
+	  Inputs		  "+++"
+	  SaturateOnIntegerOverflow on
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum9"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [100, 285, 120, 305]
+	  FontSize		  18
+	  IconShape		  "round"
+	  Inputs		  "-|+"
+	  SaturateOnIntegerOverflow on
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "m-->V\nMessumformer"
+	  Position		  [160, 262, 260, 328]
+	  FontSize		  18
+	  Gain			  "1/0.0338"
+	  SaturateOnIntegerOverflow on
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Stellgröße\nu [V]"
+	  Position		  [770, 288, 800, 302]
+	  FontSize		  18
+	  Port			  "1"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Line {
+	  SrcBlock		  "Gain5"
+	  SrcPort		  1
+	  DstBlock		  "Limited\nIntegrator4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain6"
+	  SrcPort		  1
+	  DstBlock		  "Derivative"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Sum9"
+	  SrcPort		  1
+	  DstBlock		  "m-->V\nMessumformer"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "m-->V\nMessumformer"
+	  SrcPort		  1
+	  Points		  [-5, 0]
+	  Branch {
+	    DstBlock		    "Sum11"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [25, 0]
+	    DstBlock		    "Gain5"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [25, 0; 0, 70]
+	    DstBlock		    "Gain6"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Istwert\nh4"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  DstBlock		  "Sum9"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Sollwert\nh4"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  DstBlock		  "Sum9"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Limited\nIntegrator4"
+	  SrcPort		  1
+	  Points		  [65, 0]
+	  DstBlock		  "Sum11"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Derivative"
+	  SrcPort		  1
+	  Points		  [70, 0]
+	  DstBlock		  "Sum11"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "K"
+	  SrcPort		  1
+	  DstBlock		  "Saturation"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Sum11"
+	  SrcPort		  1
+	  DstBlock		  "K"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  DstBlock		  "Stellgröße\nu [V]"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      Product
+      Name		      "Product"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [420, 567, 450, 598]
+      Inputs		      "2"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Pumpenkennlinie"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [705, 66, 775, 119]
+      Orientation	      "left"
+      NamePlacement	      "alternate"
+      SourceBlock	      "simulink3/Functions\n& Tables/Look-Up\nTable (2"
+"-D)"
+      SourceType	      "Lookup Table (2-D)"
+      x			      "[ 0 2 3.5 4 6 8 10 12] "
+      y			      "[ 0 1 2 3 4 5 6 7 8 9 10]*0.338/10"
+      t			      "[ 0 0 0 0 0 0 0 0 0 0 0 ; 0 0 0 0 0 0 0 0 0 0 0"
+" ; 0.3373 0.2611 0.1115 0.0311 0 0 0 0 0 0 0 ; 0.6051 0.5588 0.5222 0.4851 0."
+"4488 0.3499 0.2844 0.2148 0.1899 0.1431 0.0861; 1.3367 1.3073 1.2845 1.2640 1"
+".2531 1.2297 1.2081 1.1914 1.1831 1.1704 1.1614 ; 1.8718 1.8689 1.8632 1.8579"
+" 1.8491 1.8375 1.8271 1.8120 1.8045 1.7843 1.7733 ; 2.4327 2.4253 2.4193 2.41"
+"61 2.4095 2.4071 2.4035 2.3993 2.3941 2.3847 2.3799 ; 2.9356 2.9306 2.9291 2."
+"9187 2.9165 2.9125 2.8945 2.8922 2.8855 2.8775 2.8744 ]"
+      Port {
+	PortNumber		1
+	Name			"Vdot\n[L/min]"
+	TestPoint		off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope"
+      Ports		      [1, 0, 0, 0, 0]
+      Position		      [15, 280, 45, 310]
+      Orientation	      "left"
+      NamePlacement	      "alternate"
+      Floating		      off
+      Location		      [5, 30, 1029, 739]
+      Open		      on
+      NumInputPorts	      "1"
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "0.08"
+      YMax		      "0.18"
+      SaveToWorkspace	      on
+      SaveName		      "h"
+      DataFormat	      "Matrix"
+      LimitMaxRows	      on
+      MaxRows		      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope1"
+      Ports		      [1, 0, 0, 0, 0]
+      Position		      [845, 65, 875, 95]
+      Floating		      off
+      Location		      [5, 30, 1029, 739]
+      Open		      on
+      NumInputPorts	      "1"
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "7e-034"
+      YMax		      "2.1e-033"
+      SaveToWorkspace	      on
+      SaveName		      "up"
+      DataFormat	      "Matrix"
+      LimitMaxRows	      on
+      MaxRows		      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope2"
+      Ports		      [1, 0, 0, 0, 0]
+      Position		      [815, 540, 845, 570]
+      Orientation	      "down"
+      NamePlacement	      "alternate"
+      Floating		      off
+      Location		      [5, 30, 1029, 739]
+      Open		      on
+      NumInputPorts	      "1"
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "-1"
+      YMax		      "1.1"
+      SaveToWorkspace	      on
+      SaveName		      "w"
+      DataFormat	      "Matrix"
+      LimitMaxRows	      on
+      MaxRows		      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Step
+      Name		      "Sollwert h4\n[m]"
+      Position		      [875, 480, 905, 510]
+      Orientation	      "left"
+      NamePlacement	      "alternate"
+      Time		      "5"
+      Before		      "0"
+      After		      "2.5*0.0338"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [290, 145, 310, 165]
+      IconShape		      "round"
+      Inputs		      "|+-"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum1"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [490, 145, 510, 165]
+      IconShape		      "round"
+      Inputs		      "+-|"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum10"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [365, 525, 385, 545]
+      IconShape		      "round"
+      Inputs		      "++|"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum2"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [290, 280, 310, 300]
+      IconShape		      "round"
+      Inputs		      "|+-"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum3"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [490, 280, 510, 300]
+      IconShape		      "round"
+      Inputs		      "+-|"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum4"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [290, 410, 310, 430]
+      IconShape		      "round"
+      Inputs		      "|+-"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum5"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [490, 410, 510, 430]
+      IconShape		      "round"
+      Inputs		      "+-|"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum7"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [490, 575, 510, 595]
+      IconShape		      "round"
+      Inputs		      "+-|"
+      SaturateOnIntegerOverflow	on
+    }
+    Line {
+      SrcBlock		      "Sum"
+      SrcPort		      1
+      DstBlock		      "Fcn"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Limited\nIntegrator"
+      SrcPort		      1
+      Points		      [15, 0]
+      Branch {
+	DstBlock		"Sum"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -45]
+	Branch {
+	  Points		  [0, -20]
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, -105; 685, 0; 0, 160; -135, 0]
+	  DstBlock		  "Pumpenkennlinie"
+	  DstPort		  2
+	}
+      }
+    }
+    Line {
+      SrcBlock		      "Sum1"
+      SrcPort		      1
+      DstBlock		      "Gain"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gain"
+      SrcPort		      1
+      Points		      [20, 0; 0, 50; -465, 0; 0, -50]
+      DstBlock		      "Limited\nIntegrator"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gain1"
+      SrcPort		      1
+      Points		      [-40, 0]
+      DstBlock		      "Sum1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum2"
+      SrcPort		      1
+      DstBlock		      "Fcn1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum3"
+      SrcPort		      1
+      DstBlock		      "Gain2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gain2"
+      SrcPort		      1
+      Points		      [20, 0; 0, 50; -465, 0; 0, -50]
+      DstBlock		      "Limited\nIntegrator1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Limited\nIntegrator1"
+      SrcPort		      1
+      Points		      [10, 0]
+      Branch {
+	DstBlock		"Sum2"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -55]
+	Branch {
+	  Points		  [0, -5; 65, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Branch {
+	  Points		  [0, -5; -100, 0]
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+      }
+    }
+    Line {
+      SrcBlock		      "Fcn"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"Sum1"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, 80; 35, 0]
+	DstBlock		"Sum3"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Sum4"
+      SrcPort		      1
+      DstBlock		      "Fcn2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum5"
+      SrcPort		      1
+      DstBlock		      "Gain3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gain3"
+      SrcPort		      1
+      Points		      [20, 0; 0, 50; -465, 0; 0, -50]
+      DstBlock		      "Limited\nIntegrator2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Limited\nIntegrator2"
+      SrcPort		      1
+      Points		      [10, 0]
+      Branch {
+	DstBlock		"Sum4"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -55]
+	Branch {
+	  Points		  [0, -5; 65, 0]
+	  DstBlock		  "Sum2"
+	  DstPort		  2
+	}
+	Branch {
+	  Points		  [0, -5]
+	  DstBlock		  "Mux"
+	  DstPort		  3
+	}
+      }
+    }
+    Line {
+      SrcBlock		      "Fcn2"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"Sum5"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, 120; 35, 0]
+	DstBlock		"Sum7"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Fcn1"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"Sum3"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, 75; 35, 0]
+	DstBlock		"Sum5"
+	DstPort			1
+      }
+    }
+    Line {
+      Name		      "Vdot\n[L/min]"
+      Labels		      [0, 0]
+      SrcBlock		      "Pumpenkennlinie"
+      SrcPort		      1
+      DstBlock		      "Gain1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Mux"
+      SrcPort		      1
+      DstBlock		      "Scope"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum7"
+      SrcPort		      1
+      DstBlock		      "Gain4"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gain4"
+      SrcPort		      1
+      Points		      [20, 0; 0, 50; -465, 0; 0, -50]
+      DstBlock		      "Limited\nIntegrator3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Limited\nIntegrator3"
+      SrcPort		      1
+      Points		      [10, 0]
+      Branch {
+	DstBlock		"Fcn3"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -85]
+	Branch {
+	  Points		  [0, -5]
+	  DstBlock		  "Mux"
+	  DstPort		  4
+	}
+	Branch {
+	  Points		  [0, -5; 60, 0]
+	  Branch {
+	    Points		    [5, 0]
+	    DstBlock		    "Sum4"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [480, 0]
+	    DstBlock		    "PID-Regler"
+	    DstPort		    1
+	  }
+	}
+      }
+    }
+    Line {
+      SrcBlock		      "Fcn3"
+      SrcPort		      1
+      Points		      [15, 0]
+      DstBlock		      "Product"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Product"
+      SrcPort		      1
+      DstBlock		      "Sum7"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "A4"
+      SrcPort		      1
+      Points		      [40, 0]
+      DstBlock		      "Sum10"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "A 4"
+      SrcPort		      1
+      Points		      [60, 0]
+      DstBlock		      "Sum10"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Sum10"
+      SrcPort		      1
+      Points		      [15, 0]
+      DstBlock		      "Product"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "PID-Regler"
+      SrcPort		      1
+      Points		      [0, -235]
+      Branch {
+	DstBlock		"Pumpenkennlinie"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Scope1"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Sollwert h4\n[m]"
+      SrcPort		      1
+      Points		      [-40, 0]
+      Branch {
+	DstBlock		"PID-Regler"
+	DstPort			2
+      }
+      Branch {
+	DstBlock		"Scope2"
+	DstPort			1
+      }
+    }
+    Annotation {
+      Position		      [262, 142]
+      VerticalAlignment	      "top"
+      Text		      "h1 [m]"
+    }
+    Annotation {
+      Position		      [607, 146]
+      Text		      "h1'"
+    }
+    Annotation {
+      Position		      [524, 88]
+      Text		      "[m^3/s]"
+    }
+    Annotation {
+      Position		      [939, 260]
+      Text		      "g=9.81;\nA=0.00278;\nA12=18.54e-6;\nA23=17.5e-6"
+";\nA34=18.75e-6;\nA4=13.44e-6;\nhmax=0.338;\nTN=127;\nTV=12.7;\n"
+      FontSize		      14
+    }
+    Annotation {
+      Position		      [262, 277]
+      VerticalAlignment	      "top"
+      Text		      "h2 [m]"
+    }
+    Annotation {
+      Position		      [607, 281]
+      Text		      "h2'"
+    }
+    Annotation {
+      Position		      [518, 118]
+      Text		      "V'zu"
+    }
+    Annotation {
+      Position		      [473, 133]
+      Text		      "V'ab"
+    }
+    Annotation {
+      Position		      [518, 253]
+      Text		      "V'zu"
+    }
+    Annotation {
+      Position		      [473, 278]
+      Text		      "V'ab"
+    }
+    Annotation {
+      Position		      [262, 407]
+      VerticalAlignment	      "top"
+      Text		      "h3 [m]"
+    }
+    Annotation {
+      Position		      [607, 411]
+      Text		      "h3'"
+    }
+    Annotation {
+      Position		      [518, 383]
+      Text		      "V'zu"
+    }
+    Annotation {
+      Position		      [473, 408]
+      Text		      "V'ab"
+    }
+    Annotation {
+      Position		      [262, 572]
+      VerticalAlignment	      "top"
+      Text		      "h4 [m]"
+    }
+    Annotation {
+      Position		      [607, 576]
+      Text		      "h4'"
+    }
+    Annotation {
+      Position		      [518, 548]
+      Text		      "V'zu"
+    }
+    Annotation {
+      Position		      [473, 573]
+      Text		      "V'ab"
+    }
+  }
+}
