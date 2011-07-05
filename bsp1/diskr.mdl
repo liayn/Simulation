@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.24"
+    ComputedModelVersion    "1.27"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,9 +26,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Johannes"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jul 05 15:08:39 2011"
-  RTWModifiedTimeStamp	  231775471
-  ModelVersionFormat	  "1.%<AutoIncrement:24>"
+  LastModifiedDate	  "Tue Jul 05 16:02:32 2011"
+  RTWModifiedTimeStamp	  231782517
+  ModelVersionFormat	  "1.%<AutoIncrement:27>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -916,7 +916,7 @@ Model {
       System {
 	Name			"PID-Regler Cont"
 	Location		[20, 423, 814, 723]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1903,7 +1903,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Tank Diskr"
-	Location		[161, 131, 1068, 798]
+	Location		[420, 80, 1327, 747]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1920,7 +1920,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "Stellgr"
 	  SID			  "101"
-	  Position		  [805, 38, 835, 52]
+	  Position		  [790, 43, 820, 57]
 	  BlockMirror		  on
 	  IconDisplay		  "Port number"
 	}
@@ -2183,14 +2183,12 @@ Model {
 	  BlockType		  Outport
 	  Name			  "Ist"
 	  SID			  "125"
-	  Position		  [795, 435, 825, 450]
-	  BlockRotation		  270
+	  Position		  [800, 430, 815, 460]
 	  IconDisplay		  "Port number"
 	}
 	Line {
 	  SrcBlock		  "Stellgr"
 	  SrcPort		  1
-	  Points		  [0, 5]
 	  DstBlock		  "Pumpenkennlinie"
 	  DstPort		  1
 	}
@@ -2246,7 +2244,6 @@ Model {
 	  Branch {
 	    Points		    [15, -40]
 	    Branch {
-	      Points		      [0, 20]
 	      DstBlock		      "Ist"
 	      DstPort		      1
 	    }
@@ -2330,7 +2327,7 @@ Model {
 	    Points		    [0, -60; -65, 0]
 	    Branch {
 	      Labels		      [2, 0]
-	      Points		      [0, -45; 620, 0; 0, 50]
+	      Points		      [0, -45; 665, 0; 0, 50]
 	      DstBlock		      "Pumpenkennlinie"
 	      DstPort		      2
 	    }
@@ -2452,7 +2449,7 @@ Model {
       Labels		      [2, 0]
       SrcBlock		      "Mux1"
       SrcPort		      1
-      Points		      [0, 15]
+      Points		      [0, 20]
       DstBlock		      "Scope"
       DstPort		      1
     }
@@ -2582,7 +2579,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Mux2"
       SrcPort		      1
-      Points		      [130, 0]
+      Points		      [0, -25]
       DstBlock		      "Scope"
       DstPort		      3
     }
