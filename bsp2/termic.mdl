@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.3"
+    ComputedModelVersion    "1.7"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,9 +24,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "dpara"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Jul 04 16:41:12 2011"
+  LastModifiedDate	  "Tue Jul 05 11:11:52 2011"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:3>"
+  ModelVersionFormat	  "1.%<AutoIncrement:7>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -561,6 +561,38 @@ Model {
       FramePeriod	      "inf"
     }
     Block {
+      BlockType		      DiscreteFir
+      CoefSource	      "Dialog parameters"
+      enableDSPFilters	      off
+      FirFiltStruct	      "Direct form"
+      SlFirFiltStruct	      "Direct form"
+      NumCoeffs		      "[0.5 0.5]"
+      IC		      "0"
+      SampleTime	      "-1"
+      CoefMin		      "[]"
+      CoefMax		      "[]"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      TapSumDataTypeStr	      "Inherit: Same as input"
+      CoefDataTypeStr	      "Inherit: Same word length as input"
+      ProductDataTypeStr      "Inherit: Inherit via internal rule"
+      AccumDataTypeStr	      "Inherit: Same as product output"
+      StateDataTypeStr	      "Inherit: Same as accumulator"
+      OutDataTypeStr	      "Inherit: Same as accumulator"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      DiscreteTransferFcn
+      Numerator		      "[1]"
+      Denominator	      "[1 0.5]"
+      SampleTime	      "1"
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+      Realization	      "auto"
+    }
+    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -636,10 +668,10 @@ Model {
   }
   System {
     Name		    "termic"
-    Location		    [235, 120, 1032, 735]
+    Location		    [447, 120, 1111, 735]
     Open		    on
-    ModelBrowserVisibility  off
-    ModelBrowserWidth	    200
+    ModelBrowserVisibility  on
+    ModelBrowserWidth	    212
     ScreenColor		    "white"
     PaperOrientation	    "landscape"
     PaperPositionMode	    "auto"
@@ -653,10 +685,69 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant"
-      Position		      [85, 165, 115, 195]
+      Position		      [105, 165, 135, 195]
       Value		      "800"
       OutDataType	      "sfix(16)"
       OutScaling	      "2^0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant1"
+      Position		      [105, 265, 135, 295]
+      Value		      "800"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant2"
+      Position		      [105, 360, 135, 390]
+      Value		      "800"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant3"
+      Position		      [105, 455, 135, 485]
+      Value		      "800"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+    }
+    Block {
+      BlockType		      DiscreteTransferFcn
+      Name		      "Discrete\nTransfer Fcn1"
+      Position		      [260, 262, 320, 298]
+      ShowName		      off
+      Numerator		      "[0.000125]"
+      Denominator	      "[1 -1]"
+      SampleTime	      "0.1"
+    }
+    Block {
+      BlockType		      DiscreteTransferFcn
+      Name		      "Discrete\nTransfer Fcn2"
+      Position		      [225, 357, 285, 393]
+      ShowName		      off
+      Denominator	      "[1 -1]"
+      SampleTime	      "0.1"
+    }
+    Block {
+      BlockType		      DiscreteTransferFcn
+      Name		      "Discrete\nTransfer Fcn3"
+      Position		      [260, 452, 320, 488]
+      ShowName		      off
+      Numerator		      "[1.25e-005]"
+      Denominator	      "[1 -1]"
+      SampleTime	      "0.01"
+    }
+    Block {
+      BlockType		      DiscreteFir
+      Name		      "Discrete FIR Filter"
+      Ports		      [1, 1]
+      Position		      [320, 356, 380, 394]
+      ShowName		      off
+      NumCoeffs		      "[6.25e-005 6.25e-005]"
+      SampleTime	      "0.1"
     }
     Block {
       BlockType		      Gain
@@ -694,25 +785,77 @@ Model {
     }
     Block {
       BlockType		      Scope
-      Name		      "Scope"
-      Ports		      [1]
-      Position		      [535, 164, 565, 196]
+      Name		      "Scope2"
+      Ports		      [4]
+      Position		      [535, 271, 565, 444]
       Floating		      off
-      Location		      [150, 81, 474, 320]
-      Open		      on
-      NumInputPorts	      "1"
+      Location		      [363, 244, 1149, 727]
+      Open		      off
+      NumInputPorts	      "4"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+	axes4			"%<SignalLabel>"
       }
+      TimeRange		      "7000"
+      YMin		      "0~0~-5~-5"
+      YMax		      "800~800~5~5"
       DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
+      SampleInput	      on
+      SampleTime	      "1"
     }
     Block {
       BlockType		      Sum
       Name		      "Sum"
       Ports		      [2, 1]
       Position		      [180, 170, 200, 190]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum1"
+      Ports		      [2, 1]
+      Position		      [180, 270, 200, 290]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum2"
+      Ports		      [2, 1]
+      Position		      [180, 365, 200, 385]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum3"
+      Ports		      [2, 1]
+      Position		      [180, 460, 200, 480]
       ShowName		      off
       IconShape		      "round"
       Inputs		      "|+-"
@@ -740,14 +883,15 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Integrator"
       SrcPort		      1
-      Points		      [65, 0]
+      Points		      [65, 0; 0, 25]
       Branch {
-	Points			[0, 115; -300, 0]
+	Points			[0, 30; -300, 0]
 	DstBlock		"Sum"
 	DstPort			2
       }
       Branch {
-	DstBlock		"Scope"
+	Points			[30, 0]
+	DstBlock		"Scope2"
 	DstPort			1
       }
     }
@@ -758,6 +902,110 @@ Model {
       SrcPort		      1
       DstBlock		      "Integrator"
       DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Constant1"
+      SrcPort		      1
+      DstBlock		      "Sum1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum1"
+      SrcPort		      1
+      DstBlock		      "Discrete\nTransfer Fcn1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Discrete\nTransfer Fcn1"
+      SrcPort		      1
+      Points		      [165, 0; 0, 30]
+      Branch {
+	Points			[0, 25; -300, 0]
+	DstBlock		"Sum1"
+	DstPort			2
+      }
+      Branch {
+	Points			[30, 0]
+	DstBlock		"Scope2"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "Constant2"
+      SrcPort		      1
+      DstBlock		      "Sum2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum2"
+      SrcPort		      1
+      DstBlock		      "Discrete\nTransfer Fcn2"
+      DstPort		      1
+    }
+    Line {
+      Labels		      [0, 0]
+      SrcBlock		      "Discrete FIR Filter"
+      SrcPort		      1
+      Points		      [105, 0; 0, 25]
+      Branch {
+	Points			[0, 30; -300, 0]
+	DstBlock		"Sum2"
+	DstPort			2
+      }
+      Branch {
+	Points			[30, 0]
+	DstBlock		"Scope2"
+	DstPort			3
+      }
+    }
+    Line {
+      SrcBlock		      "Constant3"
+      SrcPort		      1
+      DstBlock		      "Sum3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum3"
+      SrcPort		      1
+      DstBlock		      "Discrete\nTransfer Fcn3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Discrete\nTransfer Fcn3"
+      SrcPort		      1
+      Points		      [165, 0; 0, 25]
+      Branch {
+	Points			[0, 30; -300, 0]
+	DstBlock		"Sum3"
+	DstPort			2
+      }
+      Branch {
+	Points			[30, 0]
+	DstBlock		"Scope2"
+	DstPort			4
+      }
+    }
+    Line {
+      SrcBlock		      "Discrete\nTransfer Fcn2"
+      SrcPort		      1
+      DstBlock		      "Discrete FIR Filter"
+      DstPort		      1
+    }
+    Annotation {
+      Name		      "T=800"
+      Position		      [61, 117]
+    }
+    Annotation {
+      Name		      "Zero Order Hold"
+      Position		      [391, 307]
+    }
+    Annotation {
+      Name		      "Triangle Approximation"
+      Position		      [411, 418]
+    }
+    Annotation {
+      Name		      "Impulse Invariant Discretization"
+      Position		      [402, 498]
     }
   }
 }
