@@ -5,3 +5,4 @@
 %T=c*m/(alpha*A);
 
 T=800;
+step = 0.1;

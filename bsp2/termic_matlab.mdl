@@ -1,12 +1,12 @@
 Model {
-  Name			  "termic"
+  Name			  "termic_matlab"
   Version		  7.6
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.12"
+    ComputedModelVersion    "1.31"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,9 +26,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Johannes"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jul 06 16:03:24 2011"
-  RTWModifiedTimeStamp	  231868981
-  ModelVersionFormat	  "1.%<AutoIncrement:12>"
+  LastModifiedDate	  "Wed Jul 06 16:01:49 2011"
+  RTWModifiedTimeStamp	  231857032
+  ModelVersionFormat	  "1.%<AutoIncrement:31>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -622,54 +622,10 @@ Model {
       PreserveConstantTs      off
     }
     Block {
-      BlockType		      DiscreteFir
-      CoefSource	      "Dialog parameters"
-      enableDSPFilters	      off
-      FirFiltStruct	      "Direct form"
-      SlFirFiltStruct	      "Direct form"
-      NumCoeffs		      "[0.5 0.5]"
-      IC		      "0"
-      SampleTime	      "-1"
-      CoefMin		      "[]"
-      CoefMax		      "[]"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      TapSumDataTypeStr	      "Inherit: Same as input"
-      CoefDataTypeStr	      "Inherit: Same word length as input"
-      ProductDataTypeStr      "Inherit: Inherit via internal rule"
-      AccumDataTypeStr	      "Inherit: Same as product output"
-      StateDataTypeStr	      "Inherit: Same as accumulator"
-      OutDataTypeStr	      "Inherit: Same as accumulator"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      DiscreteTransferFcn
-      Numerator		      "[1]"
-      Denominator	      "[1 0.5]"
-      InitialStates	      "0"
-      SampleTime	      "1"
-      a0EqualsOne	      off
-      NumCoefMin	      "[]"
-      NumCoefMax	      "[]"
-      DenCoefMin	      "[]"
-      DenCoefMax	      "[]"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      StateDataTypeStr	      "Inherit: Same as input"
-      NumCoefDataTypeStr      "Inherit: Inherit via internal rule"
-      DenCoefDataTypeStr      "Inherit: Inherit via internal rule"
-      NumProductDataTypeStr   "Inherit: Inherit via internal rule"
-      DenProductDataTypeStr   "Inherit: Inherit via internal rule"
-      NumAccumDataTypeStr     "Inherit: Inherit via internal rule"
-      DenAccumDataTypeStr     "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	off
-      StateMustResolveToSignalObject off
-      RTWStateStorageClass    "Auto"
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
     }
     Block {
       BlockType		      Gain
@@ -685,6 +641,23 @@ Model {
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
     }
     Block {
       BlockType		      Integrator
@@ -710,6 +683,30 @@ Model {
       NonVirtualBus	      off
     }
     Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      "S-Function"
+      FunctionName	      "system"
+      SFunctionModules	      "''"
+      PortCounts	      "[]"
+      SFunctionDeploymentMode off
+    }
+    Block {
       BlockType		      Scope
       ModelBased	      off
       TickLabels	      "OneTimeTick"
@@ -727,6 +724,28 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      CheckFcnCallInpInsideContextMsg off
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      DataTypeOverrideAppliesTo	"AllNumericTypes"
+      MinMaxOverflowLogging   "UseLocalSettings"
+      Variant		      off
+      GeneratePreprocessorConditionals off
+    }
+    Block {
       BlockType		      Sum
       IconShape		      "rectangular"
       Inputs		      "++"
@@ -742,9 +761,20 @@ Model {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
+    Block {
+      BlockType		      Terminator
+    }
+    Block {
+      BlockType		      UnitDelay
+      X0		      "0"
+      InputProcessing	      "Inherited"
+      SampleTime	      "1"
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+    }
   }
   System {
-    Name		    "termic"
+    Name		    "termic_matlab"
     Location		    [235, 120, 1153, 590]
     Open		    on
     ModelBrowserVisibility  off
@@ -759,73 +789,13 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "22"
+    SIDHighWatermark	    "28"
     Block {
       BlockType		      Constant
       Name		      "Constant"
       SID		      "1"
       Position		      [45, 45, 75, 75]
       Value		      "800"
-    }
-    Block {
-      BlockType		      DiscreteTransferFcn
-      Name		      "Discrete\nTransfer Fcn1"
-      SID		      "5"
-      Ports		      [1, 1]
-      Position		      [200, 142, 260, 178]
-      ShowName		      off
-      Numerator		      "[0.000125]"
-      Denominator	      "[1 -1]"
-      SampleTime	      "step"
-      Port {
-	PortNumber		1
-	Name			"Zero Order Hold"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
-    }
-    Block {
-      BlockType		      DiscreteTransferFcn
-      Name		      "Discrete\nTransfer Fcn2"
-      SID		      "6"
-      Ports		      [1, 1]
-      Position		      [165, 237, 225, 273]
-      ShowName		      off
-      Denominator	      "[1 -1]"
-      SampleTime	      "step"
-    }
-    Block {
-      BlockType		      DiscreteTransferFcn
-      Name		      "Discrete\nTransfer Fcn3"
-      SID		      "7"
-      Ports		      [1, 1]
-      Position		      [200, 332, 260, 368]
-      ShowName		      off
-      Numerator		      "[1.25e-005]"
-      Denominator	      "[1 -1]"
-      SampleTime	      "0.01"
-      Port {
-	PortNumber		1
-	Name			"Impulse Invariant Discretization"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
-    }
-    Block {
-      BlockType		      DiscreteFir
-      Name		      "Discrete FIR Filter"
-      SID		      "8"
-      Ports		      [1, 1]
-      Position		      [260, 236, 320, 274]
-      ShowName		      off
-      NumCoeffs		      "[6.25e-005 6.25e-005]"
-      SampleTime	      "step"
-      Port {
-	PortNumber		1
-	Name			"Triangle Approximation"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
     }
     Block {
       BlockType		      Gain
@@ -852,45 +822,29 @@ Model {
     }
     Block {
       BlockType		      Mux
-      Name		      "Mux"
-      SID		      "16"
-      Ports		      [4, 1]
-      Position		      [645, 96, 650, 134]
+      Name		      "Mux1"
+      SID		      "23"
+      Ports		      [2, 1]
+      Position		      [645, 51, 650, 89]
       ShowName		      off
+      Inputs		      "2"
       DisplayOption	      "bar"
       Port {
 	PortNumber		1
 	Name			"Temp"
-	PropagatedSignals	"Cont, Zero Order Hold, Triangle Approximation, Impulse Invariant Discretization"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
-    }
-    Block {
-      BlockType		      Mux
-      Name		      "Mux1"
-      SID		      "17"
-      Ports		      [3, 1]
-      Position		      [685, 261, 690, 299]
-      ShowName		      off
-      Inputs		      "3"
-      DisplayOption	      "bar"
-      Port {
-	PortNumber		1
-	Name			"Diff"
-	PropagatedSignals	", , "
+	PropagatedSignals	"Cont, "
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
       }
     }
     Block {
       BlockType		      Scope
-      Name		      "Scope"
+      Name		      "Scope2"
       SID		      "11"
       Ports		      [2]
-      Position		      [760, 105, 795, 145]
+      Position		      [760, 100, 795, 140]
       Floating		      off
-      Location		      [5, 51, 1393, 795]
+      Location		      [1, 52, 1389, 795]
       Open		      off
       NumInputPorts	      "2"
       List {
@@ -899,8 +853,8 @@ Model {
 	axes2			"%<SignalLabel>"
       }
       TimeRange		      "7000"
-      YMin		      "715~5.55112e-017"
-      YMax		      "800~2.1"
+      YMin		      "500~-0.0185"
+      YMax		      "740~-0.0095"
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       SampleInput	      on
@@ -922,51 +876,12 @@ Model {
     Block {
       BlockType		      Sum
       Name		      "Sum1"
-      SID		      "13"
+      SID		      "26"
       Ports		      [2, 1]
       Position		      [120, 150, 140, 170]
       ShowName		      off
       IconShape		      "round"
       Inputs		      "|+-"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum2"
-      SID		      "14"
-      Ports		      [2, 1]
-      Position		      [120, 245, 140, 265]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|+-"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum3"
-      SID		      "15"
-      Ports		      [2, 1]
-      Position		      [120, 340, 140, 360]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|+-"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum4"
-      SID		      "21"
-      Ports		      [2, 1]
-      Position		      [530, 210, 550, 230]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "+-"
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -983,46 +898,154 @@ Model {
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
+      Port {
+	PortNumber		1
+	Name			"Diff"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum6"
-      SID		      "22"
-      Ports		      [2, 1]
-      Position		      [570, 320, 590, 340]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "+-"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      SubSystem
+      Name		      "System"
+      SID		      "25"
+      Ports		      [1, 1]
+      Position		      [205, 132, 275, 188]
+      LibraryVersion	      "1.31"
+      PermitHierarchicalResolution "ExplicitOnly"
+      TreatAsAtomicUnit	      on
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      SystemSampleTime	      "0.1"
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      Array {
+	Type			"Handle"
+	Dimension		0
+	PropName		"AvailSigsLoadSave"
+      }
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      MaskType		      "Stateflow"
+      MaskDescription	      "Embedded MATLAB block"
+      MaskSelfModifiable      on
+      MaskDisplay	      "disp('PI');"
+      MaskIconFrame	      on
+      MaskIconOpaque	      off
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+      System {
+	Name			"System"
+	Location		[257, 457, 812, 717]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	SIDHighWatermark	"24"
+	Block {
+	  BlockType		  Inport
+	  Name			  "wert"
+	  SID			  "25::18"
+	  Position		  [20, 101, 40, 119]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  " Demux "
+	  SID			  "25::15"
+	  Ports			  [1, 1]
+	  Position		  [270, 205, 320, 245]
+	  Outputs		  "1"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  " SFunction "
+	  SID			  "25::14"
+	  Tag			  "Stateflow S-Function termic_matlab 2"
+	  Ports			  [1, 2]
+	  Position		  [180, 104, 230, 206]
+	  FunctionName		  "sf_sfun"
+	  Parameters		  "T,step"
+	  PortCounts		  "[1 2]"
+	  EnableBusSupport	  on
+	  Port {
+	    PortNumber		    2
+	    Name		    "tmp"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  " Terminator "
+	  SID			  "25::17"
+	  Position		  [460, 216, 480, 234]
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "tmp"
+	  SID			  "25::5"
+	  Position		  [460, 101, 480, 119]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  " SFunction "
+	  SrcPort		  1
+	  DstBlock		  " Demux "
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "wert"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "tmp"
+	  Labels		  [0, 0; 0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  2
+	  DstBlock		  "tmp"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  " Demux "
+	  SrcPort		  1
+	  DstBlock		  " Terminator "
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      UnitDelay
+      Name		      "Unit Delay"
+      SID		      "28"
+      Position		      [300, 143, 335, 177]
+      InputProcessing	      "Elements as channels (sample based)"
+      SampleTime	      "-1"
     }
     Line {
       SrcBlock		      "Constant"
       SrcPort		      1
-      Points		      [15, 0]
+      Points		      [10, 0]
       Branch {
 	DstBlock		"Sum"
 	DstPort			1
       }
       Branch {
 	Points			[0, 100]
-	Branch {
-	  DstBlock		  "Sum1"
-	  DstPort		  1
-	}
-	Branch {
-	  Points		  [0, 95]
-	  Branch {
-	    DstBlock		    "Sum2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, 95]
-	    DstBlock		    "Sum3"
-	    DstPort		    1
-	  }
-	}
+	DstBlock		"Sum1"
+	DstPort			1
       }
     }
     Line {
@@ -1036,39 +1059,24 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Integrator"
       SrcPort		      1
-      Points		      [65, 0; 0, 40]
+      Points		      [65, 0]
       Branch {
-	Points			[0, 15; -300, 0]
-	DstBlock		"Sum"
-	DstPort			2
-      }
-      Branch {
-	Labels			[1, 0]
-	Points			[75, 0]
+	Points			[0, 40]
 	Branch {
+	  Points		  [0, 15; -300, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Branch {
+	  Labels		  [1, 0]
+	  Points		  [75, 0]
 	  DstBlock		  "Sum5"
 	  DstPort		  1
 	}
-	Branch {
-	  Points		  [45, 0]
-	  Branch {
-	    Points		    [-10, 0]
-	    DstBlock		    "Sum4"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [20, 0]
-	    Branch {
-	      DstBlock		      "Mux"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [10, 0]
-	      DstBlock		      "Sum6"
-	      DstPort		      1
-	    }
-	  }
-	}
+      }
+      Branch {
+	DstBlock		"Mux1"
+	DstPort			1
       }
     }
     Line {
@@ -1078,142 +1086,253 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Sum1"
+      SrcBlock		      "System"
       SrcPort		      1
-      DstBlock		      "Discrete\nTransfer Fcn1"
-      DstPort		      1
-    }
-    Line {
-      Name		      "Zero Order Hold"
-      Labels		      [0, 0]
-      SrcBlock		      "Discrete\nTransfer Fcn1"
-      SrcPort		      1
-      Points		      [165, 0; 0, 5]
-      Branch {
-	Points			[0, 50; -300, 0]
-	DstBlock		"Sum1"
-	DstPort			2
-      }
-      Branch {
-	Labels			[1, 0]
-	Points			[75, 0]
-	Branch {
-	  Points		  [75, 0; 0, -55]
-	  DstBlock		  "Mux"
-	  DstPort		  2
-	}
-	Branch {
-	  DstBlock		  "Sum5"
-	  DstPort		  2
-	}
-      }
-    }
-    Line {
-      SrcBlock		      "Sum2"
-      SrcPort		      1
-      DstBlock		      "Discrete\nTransfer Fcn2"
-      DstPort		      1
-    }
-    Line {
-      Name		      "Triangle Approximation"
-      Labels		      [0, 0]
-      SrcBlock		      "Discrete FIR Filter"
-      SrcPort		      1
-      Points		      [105, 0; 0, 15]
-      Branch {
-	Points			[0, 40; -300, 0]
-	DstBlock		"Sum2"
-	DstPort			2
-      }
-      Branch {
-	Labels			[1, 0]
-	Points			[110, 0]
-	Branch {
-	  Points		  [65, 0; 0, -150]
-	  DstBlock		  "Mux"
-	  DstPort		  3
-	}
-	Branch {
-	  DstBlock		  "Sum4"
-	  DstPort		  2
-	}
-      }
-    }
-    Line {
-      SrcBlock		      "Sum3"
-      SrcPort		      1
-      DstBlock		      "Discrete\nTransfer Fcn3"
-      DstPort		      1
-    }
-    Line {
-      Name		      "Impulse Invariant Discretization"
-      Labels		      [0, 0]
-      SrcBlock		      "Discrete\nTransfer Fcn3"
-      SrcPort		      1
-      Points		      [165, 0; 0, 25]
-      Branch {
-	Points			[0, 30; -300, 0]
-	DstBlock		"Sum3"
-	DstPort			2
-      }
-      Branch {
-	Labels			[1, 0]
-	Points			[150, 0]
-	Branch {
-	  Points		  [50, 0]
-	  DstBlock		  "Mux"
-	  DstPort		  4
-	}
-	Branch {
-	  DstBlock		  "Sum6"
-	  DstPort		  2
-	}
-      }
-    }
-    Line {
-      SrcBlock		      "Discrete\nTransfer Fcn2"
-      SrcPort		      1
-      DstBlock		      "Discrete FIR Filter"
-      DstPort		      1
-    }
-    Line {
-      Name		      "Temp"
-      Labels		      [0, 0]
-      SrcBlock		      "Mux"
-      SrcPort		      1
-      DstBlock		      "Scope"
+      DstBlock		      "Unit Delay"
       DstPort		      1
     }
     Line {
       Name		      "Diff"
-      Labels		      [2, 0]
-      SrcBlock		      "Mux1"
-      SrcPort		      1
-      Points		      [15, 0; 0, -145]
-      DstBlock		      "Scope"
-      DstPort		      2
-    }
-    Line {
       Labels		      [0, 0]
-      SrcBlock		      "Sum6"
-      SrcPort		      1
-      Points		      [75, 0]
-      DstBlock		      "Mux1"
-      DstPort		      3
-    }
-    Line {
-      SrcBlock		      "Sum4"
-      SrcPort		      1
-      Points		      [0, 60]
-      DstBlock		      "Mux1"
-      DstPort		      2
-    }
-    Line {
       SrcBlock		      "Sum5"
       SrcPort		      1
-      Points		      [35, 0; 0, 130; 115, 0]
-      DstBlock		      "Mux1"
+      DstBlock		      "Scope2"
+      DstPort		      2
+    }
+    Line {
+      Name		      "Temp"
+      Labels		      [0, 0; 0, 0]
+      SrcBlock		      "Mux1"
+      SrcPort		      1
+      Points		      [45, 0; 0, 40]
+      DstBlock		      "Scope2"
       DstPort		      1
     }
+    Line {
+      SrcBlock		      "Sum1"
+      SrcPort		      1
+      DstBlock		      "System"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Unit Delay"
+      SrcPort		      1
+      Points		      [10, 0]
+      Branch {
+	Points			[45, 0]
+	Branch {
+	  Points		  [0, -80]
+	  DstBlock		  "Mux1"
+	  DstPort		  2
+	}
+	Branch {
+	  Points		  [110, 0]
+	  DstBlock		  "Sum5"
+	  DstPort		  2
+	}
+      }
+      Branch {
+	Labels			[2, 0]
+	Points			[0, 70; -220, 0]
+	DstBlock		"Sum1"
+	DstPort			2
+      }
+    }
+  }
+}
+# Finite State Machines
+#
+#    Stateflow Version 7.5 (R2010a) dated Jul 24 2010, 07:30:36
+#
+#
+
+
+Stateflow {
+  machine {
+    id			    1
+    name		    "termic_matlab"
+    created		    "06-Jul-2011 15:16:57"
+    isLibrary		    0
+    firstTarget		    11
+    debug {
+    }
+    sfVersion		    75014000.000003
+  }
+  chart {
+    id			    2
+    name		    "System"
+    windowPosition	    [320.59 341.83 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1388 826 1.333333333333333]
+    treeNode		    [0 3 0 0]
+    firstTransition	    5
+    firstJunction	    4
+    viewObj		    2
+    machine		    1
+    subviewS {
+    }
+    ssIdHighWaterMark	    12
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    6
+    chartFileNumber	    2
+    disableImplicitCasting  1
+    eml {
+      name		      "PI"
+    }
+  }
+  state {
+    id			    3
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    2
+    treeNode		    [2 0 0 0]
+    superState		    SUBCHART
+    subviewer		    2
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function tmp = PI(wert,T,step)\n    persistent X\n    \n    if isempty(X)\n        X = 0;\n    en"
+      "d\n    \n    X = X + wert/T*step;\n    tmp = X;\n    \n    \n%function tmp = PI(wert,K,step) %#eml\n    %persist"
+      "ent X\n    \n    %eml.varsize('X',[1 (7000/0.1+100)]);\n    \n    %if isempty(X)\n    %    X = wert;\n    %else\n"
+      "    %    X = [X wert];\n    %end;\n    \n    %res = filter([6.25e-005 6.25e-005],[1 -1],X);\n    \n    %tmp = re"
+      "s(end);"
+      editorLayout	      "100 M4x1[116 132 1080 733]"
+    }
+  }
+  junction {
+    id			    4
+    position		    [23.5747 49.5747 7]
+    chart		    2
+    linkNode		    [2 0 0]
+    subviewer		    2
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    5
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      4
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    2
+    linkNode		    [2 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    2
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    6
+    ssIdNumber		    6
+    name		    "wert"
+    linkNode		    [2 0 7]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    7
+    ssIdNumber		    5
+    name		    "tmp"
+    linkNode		    [2 6 8]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    8
+    ssIdNumber		    11
+    name		    "T"
+    linkNode		    [2 7 9]
+    scope		    PARAMETER_DATA
+    isNonTunable	    1
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    9
+    ssIdNumber		    12
+    name		    "step"
+    linkNode		    [2 8 0]
+    scope		    PARAMETER_DATA
+    paramIndexForInitFromWorkspace 1
+    isNonTunable	    1
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  instance {
+    id			    10
+    name		    "System"
+    machine		    1
+    chart		    2
+  }
+  target {
+    id			    11
+    name		    "sfun"
+    description		    "Default Simulink S-Function Target."
+    machine		    1
+    linkNode		    [1 0 0]
   }
 }
