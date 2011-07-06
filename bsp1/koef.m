@@ -8,6 +8,7 @@ A4=13.44e-6;
 hmax=0.338;
 
 T_a = 1;
+steps = 1800/T_a;
 
 T_n=127;
 T_v=12.7;
@@ -23,3 +24,8 @@ K_pid = K_p/T_n;
 G_par = K_pid*tf([T_1*T_2 T_1+T_2 1],[T_p 1 0]);
     
 H = c2d(G_par,T_a,'tustin');
+
+b = cell2mat(H.num);
+a = cell2mat(H.den);
+
+set_param('diskr_matlab','IgnoredZcDiagnostic','none');
