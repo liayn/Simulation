@@ -98,10 +98,10 @@ unsigned int sf_diskr_matlab_process_check_sum_call( int nlhs, mxArray * plhs[],
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1918163130U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2483188026U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3519606610U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2050150031U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3398577793U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1799465568U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1093760871U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(117365507U);
   }
 
   return 1;

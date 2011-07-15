@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.64"
+    ComputedModelVersion    "1.66"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -37,9 +37,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Johannes"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jul 06 15:12:35 2011"
-  RTWModifiedTimeStamp	  231865940
-  ModelVersionFormat	  "1.%<AutoIncrement:64>"
+  LastModifiedDate	  "Fri Jul 15 11:02:44 2011"
+  RTWModifiedTimeStamp	  232628390
+  ModelVersionFormat	  "1.%<AutoIncrement:66>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1273,7 +1273,7 @@ Model {
       Position		      [820, 218, 850, 252]
       Floating		      off
       Location		      [5, 52, 1393, 795]
-      Open		      off
+      Open		      on
       NumInputPorts	      "3"
       List {
 	ListType		AxesTitles
@@ -2638,9 +2638,13 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function stell = PID(ist,soll,b,a,steps) %#eml\n    persistent X\n    \n    eml.varsize('X',[1 st"
-      "eps+1]);\n    \n    diff = soll-ist;\n    diff = diff/0.0338;\n    \n    if isempty(X)\n        X = diff;\n    e"
-      "lse\n        X = [X diff];\n    end;\n    \n    res = filter(b,a,X);\n    \n    stell = min(res(end),10);"
+      script		      "% b,a sind die Koeffizienten für den Filter\n% steps gibt an wieviele Simulationsschritte gemacht"
+      " werden, wird benötigt\n% um Liste zu initialisieren\n% soll und ist werden übergeben\nfunction stell = PID(ist,"
+      "soll,b,a,steps) %#eml\n    persistent X\n    \n    eml.varsize('X',[1 steps+1]);\n    \n    % Differenz zwischen"
+      " Soll und Ist größe Ausrechnen\n    diff = soll-ist;\n    diff = diff/0.0338;\n    \n    % Am Anfang die History"
+      " initialisieren\n    if isempty(X)\n        X = diff;\n    % neue Werte hinzufügen\n    else\n        X = [X dif"
+      "f];\n    end;\n    \n    res = filter(b,a,X);\n    \n    % letztes Ergebnis des Filters ausgeben, auf 10 limitie"
+      "ren\n    stell = min(res(end),10);"
       editorLayout	      "100 M4x1[227 325 1080 733]"
     }
   }

@@ -349,37 +349,26 @@ static void c2_c2_diskr_matlab(SFc2_diskr_matlabInstanceStruct *chartInstance)
     &chartInstance->c2_X_sizes, NULL, 1, (void *)
     c2_sf_marshall, 10);
   CV_EML_FCN(0, 0);
-
-  /*  b,a sind die Koeffizienten für den Filter */
-  /*  steps gibt an wieviele Simulationsschritte gemacht werden, wird benötigt */
-  /*  um Liste zu initialisieren */
-  /*  soll und ist werden übergeben */
-  _SFD_EML_CALL(0, 8);
-
-  /*  Differenz zwischen Soll und Ist größe Ausrechnen */
-  _SFD_EML_CALL(0, 11);
+  _SFD_EML_CALL(0, 4);
+  _SFD_EML_CALL(0, 6);
   c2_diff = c2_soll - c2_ist;
-  _SFD_EML_CALL(0, 12);
+  _SFD_EML_CALL(0, 7);
   c2_A = c2_diff;
   c2_x = c2_A;
   c2_b_x = c2_x;
   c2_c_x = c2_b_x;
   c2_diff = c2_c_x / 0.0338;
-
-  /*  Am Anfang die History initialisieren */
-  _SFD_EML_CALL(0, 15);
+  _SFD_EML_CALL(0, 9);
   if (CV_EML_IF(0, 0, !chartInstance->c2_X_not_empty)) {
-    _SFD_EML_CALL(0, 16);
+    _SFD_EML_CALL(0, 10);
     chartInstance->c2_X_sizes[0] = 1;
     chartInstance->c2_X_sizes[1] = 1;
     c2_i9 = chartInstance->c2_X_sizes[0];
     c2_i10 = chartInstance->c2_X_sizes[1];
     chartInstance->c2_X_data[0] = c2_diff;
     chartInstance->c2_X_not_empty = TRUE;
-
-    /*  neue Werte hinzufügen */
   } else {
-    _SFD_EML_CALL(0, 19);
+    _SFD_EML_CALL(0, 12);
     c2_tmp_sizes[0] = 1;
     c2_tmp_sizes[1] = chartInstance->c2_X_sizes[1] + 1;
     c2_loop_ub = chartInstance->c2_X_sizes[1] - 1;
@@ -402,7 +391,7 @@ static void c2_c2_diskr_matlab(SFc2_diskr_matlabInstanceStruct *chartInstance)
     chartInstance->c2_X_not_empty = TRUE;
   }
 
-  _SFD_EML_CALL(0, 22);
+  _SFD_EML_CALL(0, 15);
   c2_b_tmp_sizes[0] = 1;
   c2_b_tmp_sizes[1] = chartInstance->c2_X_sizes[1];
   c2_i15 = c2_b_tmp_sizes[0];
@@ -423,10 +412,9 @@ static void c2_c2_diskr_matlab(SFc2_diskr_matlabInstanceStruct *chartInstance)
     c2_res_data[c2_i18] = c2_c_tmp_data[c2_i18];
   }
 
-  /*  letztes Ergebnis des Filters ausgeben, auf 10 Limitieren */
-  _SFD_EML_CALL(0, 25);
+  _SFD_EML_CALL(0, 17);
   c2_stell = c2_min(chartInstance, c2_res_data[c2_res_sizes[1] - 1], 10.0);
-  _SFD_EML_CALL(0, -25);
+  _SFD_EML_CALL(0, -17);
   sf_debug_symbol_scope_pop();
   *c2_b_stell = c2_stell;
   _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG, 0);
@@ -1304,10 +1292,10 @@ static void init_dsm_address_info(SFc2_diskr_matlabInstanceStruct *chartInstance
 /* SFunction Glue Code */
 void sf_c2_diskr_matlab_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3771090877U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1001650727U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(695425190U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2963494337U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2044882157U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1205123155U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1020629017U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(953853911U);
 }
 
 mxArray *sf_c2_diskr_matlab_get_autoinheritance_info(void)
@@ -1321,10 +1309,10 @@ mxArray *sf_c2_diskr_matlab_get_autoinheritance_info(void)
   {
     mxArray *mxChecksum = mxCreateDoubleMatrix(4,1,mxREAL);
     double *pr = mxGetPr(mxChecksum);
-    pr[0] = (double)(109169586U);
-    pr[1] = (double)(2952757602U);
-    pr[2] = (double)(2560440105U);
-    pr[3] = (double)(449334859U);
+    pr[0] = (double)(1891473060U);
+    pr[1] = (double)(1684632787U);
+    pr[2] = (double)(785418320U);
+    pr[3] = (double)(4243659703U);
     mxSetField(mxAutoinheritanceInfo,0,"checksum",mxChecksum);
   }
 
@@ -1472,7 +1460,7 @@ static mxArray *sf_get_sim_state_info_c2_diskr_matlab(void)
 
   mxArray *mxInfo = mxCreateStructMatrix(1, 1, 2, infoFields);
   const char *infoEncStr[] = {
-    "100 S1x3'type','srcId','name','auxInfo'{{M[1],M[5],T\"stell\",},{M[4],M[0],T\"X\",S'l','i','p'{{M1x2[242 243],M[0],}}},{M[8],M[0],T\"is_active_c2_diskr_matlab\",}}"
+    "100 S1x3'type','srcId','name','auxInfo'{{M[1],M[5],T\"stell\",},{M[4],M[0],T\"X\",S'l','i','p'{{M1x2[62 63],M[0],}}},{M[8],M[0],T\"is_active_c2_diskr_matlab\",}}"
   };
 
   mxArray *mxVarInfo = sf_mex_decode_encoded_mx_struct_array(infoEncStr, 3, 10);
@@ -1541,8 +1529,8 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
         /* Initialization of EML Model Coverage */
         _SFD_CV_INIT_EML(0,1,1,0,0,0,0,0,0);
-        _SFD_CV_INIT_EML_FCN(0,0,"eML_blk_kernel",180,-1,667);
-        _SFD_CV_INIT_EML_IF(0,0,440,453,504,538);
+        _SFD_CV_INIT_EML_FCN(0,0,"eML_blk_kernel",0,-1,298);
+        _SFD_CV_INIT_EML_IF(0,0,162,175,198,232);
         _SFD_TRANS_COV_WTS(0,0,0,1,0);
         if (chartAlreadyPresent==0) {
           _SFD_TRANS_COV_MAPS(0,
@@ -1760,10 +1748,10 @@ static void mdlSetWorkWidths_c2_diskr_matlab(SimStruct *S)
   }
 
   ssSetOptions(S,ssGetOptions(S)|SS_OPTION_WORKS_WITH_CODE_REUSE);
-  ssSetChecksum0(S,(2819867020U));
-  ssSetChecksum1(S,(3481327094U));
-  ssSetChecksum2(S,(2742884794U));
-  ssSetChecksum3(S,(215686298U));
+  ssSetChecksum0(S,(2318725662U));
+  ssSetChecksum1(S,(3463904009U));
+  ssSetChecksum2(S,(1688842994U));
+  ssSetChecksum3(S,(13001058U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
 }

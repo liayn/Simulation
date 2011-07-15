@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.27"
+    ComputedModelVersion    "1.28"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,9 +26,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Johannes"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jul 05 16:02:32 2011"
-  RTWModifiedTimeStamp	  231782517
-  ModelVersionFormat	  "1.%<AutoIncrement:27>"
+  LastModifiedDate	  "Fri Jul 15 10:32:36 2011"
+  RTWModifiedTimeStamp	  232626735
+  ModelVersionFormat	  "1.%<AutoIncrement:28>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -838,14 +838,6 @@ Model {
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      ToWorkspace
-      VariableName	      "simulink_output"
-      MaxDataPoints	      "1000"
-      Decimation	      "1"
-      SampleTime	      "0"
-      FixptAsFi		      off
     }
   }
   System {
@@ -2426,17 +2418,6 @@ Model {
 	}
       }
     }
-    Block {
-      BlockType		      ToWorkspace
-      Name		      "To Workspace"
-      SID		      "130"
-      Ports		      [1]
-      Position		      [685, 370, 745, 400]
-      VariableName	      "samples"
-      MaxDataPoints	      "inf"
-      SampleTime	      "60"
-      SaveFormat	      "Array"
-    }
     Line {
       SrcBlock		      "Step"
       SrcPort		      1
@@ -2506,11 +2487,6 @@ Model {
 	  DstBlock		  "Sum8"
 	  DstPort		  2
 	}
-      }
-      Branch {
-	Points			[0, 50; 190, 0; 0, -50]
-	DstBlock		"To Workspace"
-	DstPort			1
       }
     }
     Line {

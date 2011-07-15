@@ -1,7 +1,7 @@
 /* Include files */
 
-#include "diskr_matlab_sfun.h"
-#include "c2_diskr_matlab.h"
+#include "termic_matlab_sfun.h"
+#include "c2_termic_matlab.h"
 
 /* Type Definitions */
 
@@ -11,34 +11,34 @@
 
 /* Variable Definitions */
 int32_T _sfEvent_;
-uint32_T _diskr_matlabMachineNumber_;
+uint32_T _termic_matlabMachineNumber_;
 real_T _sfTime_;
 
 /* Function Declarations */
 
 /* Function Definitions */
-void diskr_matlab_initializer(void)
+void termic_matlab_initializer(void)
 {
   _sfEvent_ = CALL_EVENT;
 }
 
-void diskr_matlab_terminator(void)
+void termic_matlab_terminator(void)
 {
 }
 
 /* SFunction Glue Code */
-unsigned int sf_diskr_matlab_method_dispatcher(SimStruct *simstructPtr, unsigned
-  int chartFileNumber, const char* specsCksum, int_T method, void *data)
+unsigned int sf_termic_matlab_method_dispatcher(SimStruct *simstructPtr,
+  unsigned int chartFileNumber, const char* specsCksum, int_T method, void *data)
 {
   if (chartFileNumber==2) {
-    c2_diskr_matlab_method_dispatcher(simstructPtr, method, data);
+    c2_termic_matlab_method_dispatcher(simstructPtr, method, data);
     return 1;
   }
 
   return 0;
 }
 
-unsigned int sf_diskr_matlab_process_check_sum_call( int nlhs, mxArray * plhs[],
+unsigned int sf_termic_matlab_process_check_sum_call( int nlhs, mxArray * plhs[],
   int nrhs, const mxArray * prhs[] )
 {
 
@@ -58,10 +58,10 @@ unsigned int sf_diskr_matlab_process_check_sum_call( int nlhs, mxArray * plhs[],
     mxGetString(prhs[1], commandName,sizeof(commandName)/sizeof(char));
     commandName[(sizeof(commandName)/sizeof(char)-1)] = '\0';
     if (!strcmp(commandName,"machine")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(220413115U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(533759895U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2503979409U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3620919166U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(71628323U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3065841565U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2497501145U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(269995647U);
     } else if (!strcmp(commandName,"exportedFcn")) {
       ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(0U);
@@ -78,8 +78,8 @@ unsigned int sf_diskr_matlab_process_check_sum_call( int nlhs, mxArray * plhs[],
       switch (chartFileNumber) {
        case 2:
         {
-          extern void sf_c2_diskr_matlab_get_check_sum(mxArray *plhs[]);
-          sf_c2_diskr_matlab_get_check_sum(plhs);
+          extern void sf_c2_termic_matlab_get_check_sum(mxArray *plhs[]);
+          sf_c2_termic_matlab_get_check_sum(plhs);
           break;
         }
 
@@ -98,10 +98,10 @@ unsigned int sf_diskr_matlab_process_check_sum_call( int nlhs, mxArray * plhs[],
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1918163130U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2483188026U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3519606610U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2050150031U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1248039789U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(838016625U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(615744364U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2938181967U);
   }
 
   return 1;
@@ -114,7 +114,7 @@ unsigned int sf_diskr_matlab_process_check_sum_call( int nlhs, mxArray * plhs[],
 
 }
 
-unsigned int sf_diskr_matlab_autoinheritance_info( int nlhs, mxArray * plhs[],
+unsigned int sf_termic_matlab_autoinheritance_info( int nlhs, mxArray * plhs[],
   int nrhs, const mxArray * prhs[] )
 {
 
@@ -136,8 +136,8 @@ unsigned int sf_diskr_matlab_autoinheritance_info( int nlhs, mxArray * plhs[],
     switch (chartFileNumber) {
      case 2:
       {
-        extern mxArray *sf_c2_diskr_matlab_get_autoinheritance_info(void);
-        plhs[0] = sf_c2_diskr_matlab_get_autoinheritance_info();
+        extern mxArray *sf_c2_termic_matlab_get_autoinheritance_info(void);
+        plhs[0] = sf_c2_termic_matlab_get_autoinheritance_info();
         break;
       }
 
@@ -156,8 +156,8 @@ unsigned int sf_diskr_matlab_autoinheritance_info( int nlhs, mxArray * plhs[],
 
 }
 
-unsigned int sf_diskr_matlab_get_eml_resolved_functions_info( int nlhs, mxArray *
-  plhs[], int nrhs, const mxArray * prhs[] )
+unsigned int sf_termic_matlab_get_eml_resolved_functions_info( int nlhs, mxArray
+  * plhs[], int nrhs, const mxArray * prhs[] )
 {
 
 #ifdef MATLAB_MEX_FILE
@@ -178,10 +178,10 @@ unsigned int sf_diskr_matlab_get_eml_resolved_functions_info( int nlhs, mxArray 
     switch (chartFileNumber) {
      case 2:
       {
-        extern const mxArray *sf_c2_diskr_matlab_get_eml_resolved_functions_info
-          (void);
+        extern const mxArray
+          *sf_c2_termic_matlab_get_eml_resolved_functions_info(void);
         mxArray *persistentMxArray = (mxArray *)
-          sf_c2_diskr_matlab_get_eml_resolved_functions_info();
+          sf_c2_termic_matlab_get_eml_resolved_functions_info();
         plhs[0] = mxDuplicateArray(persistentMxArray);
         mxDestroyArray(persistentMxArray);
         break;
@@ -202,14 +202,14 @@ unsigned int sf_diskr_matlab_get_eml_resolved_functions_info( int nlhs, mxArray 
 
 }
 
-void diskr_matlab_debug_initialize(void)
+void termic_matlab_debug_initialize(void)
 {
-  _diskr_matlabMachineNumber_ = sf_debug_initialize_machine("diskr_matlab",
+  _termic_matlabMachineNumber_ = sf_debug_initialize_machine("termic_matlab",
     "sfun",0,1,0,0,0);
-  sf_debug_set_machine_event_thresholds(_diskr_matlabMachineNumber_,0,0);
-  sf_debug_set_machine_data_thresholds(_diskr_matlabMachineNumber_,0);
+  sf_debug_set_machine_event_thresholds(_termic_matlabMachineNumber_,0,0);
+  sf_debug_set_machine_data_thresholds(_termic_matlabMachineNumber_,0);
 }
 
-void diskr_matlab_register_exported_symbols(SimStruct* S)
+void termic_matlab_register_exported_symbols(SimStruct* S)
 {
 }
