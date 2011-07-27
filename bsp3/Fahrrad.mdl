@@ -107,7 +107,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.5.1"
 	  StartTime		  "0.0"
-	  StopTime		  "100.00"
+	  StopTime		  "10.00"
 	  AbsTol		  "auto"
 	  FixedStep		  "0.01"
 	  InitialStep		  "auto"
@@ -659,6 +659,22 @@ Model {
       InitialOutput	      "[]"
     }
     Block {
+      BlockType		      Saturate
+      UpperLimit	      "0.5"
+      LowerLimit	      "-0.5"
+      LinearizeAsGain	      on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+    }
+    Block {
       BlockType		      Scope
       ModelBased	      off
       TickLabels	      "OneTimeTick"
@@ -748,7 +764,7 @@ Model {
   }
   System {
     Name		    "Fahrrad"
-    Location		    [745, 90, 1227, 549]
+    Location		    [699, 90, 1227, 549]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    212
@@ -787,7 +803,7 @@ Model {
 	Location		[310, 198, 1054, 673]
 	Open			on
 	ModelBrowserVisibility	on
-	ModelBrowserWidth	200
+	ModelBrowserWidth	154
 	ScreenColor		"white"
 	PaperOrientation	"landscape"
 	PaperPositionMode	"auto"
@@ -913,6 +929,16 @@ Model {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  Position		  [400, 400, 430, 430]
+	  Orientation		  "down"
+	  UpperLimit		  "pi/2"
+	  LowerLimit		  "-pi/2"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
 	}
 	Block {
 	  BlockType		  Scope
@@ -1182,23 +1208,30 @@ Model {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Gain5"
 	  SrcPort		  1
-	  Points		  [0, 65]
-	  Branch {
-	    Labels		    [1, 0]
-	    DstBlock		    "p"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [-335, 0; 0, -140]
-	    DstBlock		    "p''1"
-	    DstPort		    1
-	  }
+	  DstBlock		  "Saturation"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "p''1"
 	  SrcPort		  1
 	  DstBlock		  "p''"
 	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  Points		  [0, 10]
+	  Branch {
+	    Labels		    [1, 0]
+	    DstBlock		    "p"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Labels		    [2, 1]
+	    Points		    [-335, 0; 0, -140]
+	    DstBlock		    "p''1"
+	    DstPort		    1
+	  }
 	}
 	Annotation {
 	  Position		  [580, 227]
@@ -1800,21 +1833,22 @@ Model {
     Line {
       SrcBlock		      "Sine Wave\nFunction"
       SrcPort		      1
-      DstBlock		      "Gain"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Constant"
-      SrcPort		      1
-      Points		      [45, 0]
+      Points		      [115, 0]
       Branch {
-	Points			[5, 0; 0, -20]
-	DstBlock		"Fahrrad"
+	DstBlock		"Gain"
 	DstPort			1
       }
       Branch {
-	DstBlock		"Fahrrad"
-	DstPort			2
+	Points			[0, 115]
+	Branch {
+	  DstBlock		  "Fahrrad"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, 20]
+	  DstBlock		  "Fahrrad"
+	  DstPort		  2
+	}
       }
     }
     Annotation {

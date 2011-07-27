@@ -11,9 +11,9 @@ m = bm + dm      %total mass
 J = bm*h*h       %trägheitsmoment of bike
 Js = dm*dh*dh    %trägheitsmoment of biker
 
-Ki = [1 1]
-Kp = [1 1]
-Kd = [1 1]
+Ki = [0.00001 0.00001]
+Kp = [0.00001 0.00001]
+Kd = [0.00001 0.00001]
 
 tau = 0.2
 
