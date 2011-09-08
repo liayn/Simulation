@@ -8,7 +8,9 @@
 \usepackage{ngerman}
 \usepackage{fullpage}
 \usepackage{listings}
+\usepackage{color}
 \usepackage{ifpdf}
+\usepackage{float}
 \usepackage[pdftex]{graphicx}
 
 \title{Diskrete Regelung}
@@ -16,35 +18,77 @@
 
 \date{Juli 2011}
 
+
+\definecolor{listinggray}{gray}{0.9}
+
 \begin{document}
+
+\lstset{language=matlab}
+\lstset{backgroundcolor=\color{listinggray}}
+\lstset{linewidth=120mm}
+\lstset{frameround=tttt}
+\lstset{keywordstyle=\color{red}\bfseries\underbar}
 
 \maketitle
 
 \section{Füllstandsregelung eines Viertanksystems}
 
+Diese Aufgabe basiert auf dem Buch \emph{Modellbildung und Simulation dynamischer Systeme} von Helmut E. Scherf.
+
 Es ist folgender Aufbau gegeben: Vier Tanks sind miteinander durch Röhren verbunden. Ein Motor pumpt Wasser in den ersten Tank und das Wasser fließt im letzten Tank ab. Der Querschnitt der Röhren ist grundsätzlich einstellbar, bleibt jedoch während des Betriebs konstant. Das Ziel ist es, den Füllstand im letzten Tank auf eine gewünschte Höhe zu regeln. Ein kontinuierlicher Regler der diese Aufgabe erfüllt, ist im Buch Modellbildung und Simulation dynamischer Systeme von H.E. Schärf beschrieben. Unsere Aufgabe ist es dieses kontinuierlichen Regler in einen diskreten Regler umzuwandeln. Das Model der Tanks haben wir vom Buch übernommen und in einen Simulink Block gekapselt. 
 
 Der Regler ist im Buch als PID Regler ausgeführt. Um daraus einen diskreten Regler bauen zu können, muss die Übertragungsfunktion diskretisiert werden. Das geschieht mit der Matlab Funktion c2d. Wenn man die Übertragungsfunktion eines idealen Reglers so transformiert, funktioniert der digitale Regler aber nicht richtig. Es muss noch eine parasitäre Zeitkonstante zum kontinuierlichen Regler hinzugefügt werden (somit wird er zum realen PID Regler) und dieser kann dann diskretisiert werden. Diese Rechnung passiert in der Datei \emph{koef.m }. Darin werden auch alle benötigten Konstanten definiert, daher muss diese Datei ausgeführt werden um das Simulink Model lauffähig zu machen. 
 
+\lstinputlisting[caption={koef.m für Viertanksystem}] {../bsp1/koef.m}
+
 Um das Verhalten des diskreten und des kontinuierlichen Reglers vergleichen zu können, haben wir die Zwei gleichzeitig simuliert und die Ergebnisse in einem Plot dargestellt (Abbildung \ref{fig:bsp1}). Der Plot zeigt, dass das Verhalten der zwei Regler gut übereinstimmt. Die Abweichung der Stellgrößen der Regler beträgt maximal 3 und pendelt sonst immer um 0 (ist im mittleren Plot in Abbildung \ref{fig:bsp1}). Der Füllstand im oberen Plot und auch die Stellgrößen im unteren Plot sind weitgehend deckungsgleich.
 
-Der diskrete Regler wurde in zwei Varianten realisiert. Einmal mit dem Simulink Block \emph{Discrete Filter} (in Datei diskre.mdl realisiert). Die Koeffizienten für diesen Filter werden in der Datei koef.m berechnet und hier verwendet. Die andere Variante (in der Datei diskr\_matlab.mdl zu finden) verwendet eine selbst geschriebene Embedded Matlab Function. Darin wird die Matlab Function \emph{filter} verwendet, um die Inputdaten zu filtern. Die Koeffizienten sind die Gleichen wie bei der Simulink Variante (siehe Abbildung \ref{fig:bsp1_code}).
+Der diskrete Regler wurde in zwei Varianten realisiert. Einmal mit dem Simulink Block \emph{Discrete Filter} (in Datei diskre.mdl realisiert). Die Koeffizienten für diesen Filter werden in der Datei koef.m berechnet und hier verwendet. Die andere Variante (in der Datei diskr\_matlab.mdl zu finden, für Code siehe Listing \ref{fig:bsp1_code}) verwendet eine selbst geschriebene Embedded Matlab Function. Darin wird die Matlab Function \emph{filter} verwendet, um die Inputdaten zu filtern. Die Koeffizienten sind die Gleichen wie bei der Simulink Variante. Auch diese Variante stimmt gut mit dem kontinuierlichen Regler überein.
 
-\begin{figure}[ht!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{erg_bsp1.png}
-    \caption{Vergleich Kontinuierlicher/Diskreter Regler}
+    \caption{Vergleich Kontinuierlicher/Diskreter Regler für das Viertanksystem}
     \label{fig:bsp1}
 \end{figure}
 
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=\linewidth]{code_bsp1.png}
-    \caption{Code für Realisierung als Matlab Function}
-    \label{fig:bsp1_code}
-\end{figure}
+\lstinputlisting[caption={Code für Matlab Function für Viertanksystem},label=fig:bsp1_code] {bsp1.m}
 
 \section{Aufheizen eines Werkstücks in einem Glühofen}
+
+Diese Aufgabe basiert auf dem Buch \emph{Modellbildung und Simulation dynamischer Systeme} von Helmut E. Scherf.
+
+Bei diesem Beispiel geht es um einen Glühofen in den ein Werkstück mit der Masse m und einer Ausgangstemperatur in den Ofen gelegt. Nun soll eine bestimmte Temperatur im Ofen erreicht und gehalten werden. Die Oberfläche $A$ und der Wärmeübergangskoeffizient $\alpha$ des Werkstücks sind bekannt. Im Buch wird ausgeführt wie die Differentialgleichungen aufgestellt werden müssen. Dabei lassen sich alle Variablen die das Werkstück beschreiben in die Formel $T= \frac{c m}{\alpha A}$ zusammen fassen. Dieser Gleichung die die Temperatur ($\vartheta_G$) im Ofen beschreibt ist $T*\dot{\vartheta_W}+\vartheta_W = \vartheta_G$. Die Temperatur des Werkstückes wird mit $\vartheta_W$ bezeichnet. 
+
+Diese Differentialgleichung wurde im Buch als kontinuierlicher Regler realisiert. Wie im ersten Beispiel auch haben wir auch hier die Übertragungsfunktion diskretisiert. Hier haben wir verschiedene Optionen der c2d Funktion ausprobiert und die Ergebnisse vergleichen (siehe Abbildung \ref{fig:reg_bsp2}). Wir haben hier die Algorithmen Zero Order Hold, Triangle approximation und Impulse invariant discretization verwendet. Die Ergebnisse der verschiedenen Algorithmen sind in der Abbildung \ref{fig:bsp2} zu sehen. Die Abweichung zum kontinuierlichen Regler ist mit allen Diskreten Reglern sehr klein.
+
+Auch hier wurde der Regler einmal als Simulink und einmal als Embedded Matlab Function realisiert. Der Code für die Embedded Matlab Function ist im Listing \ref{code:bsp2} angegeben.
+
+\begin{lstlisting}[caption={Code für Matlab Function für Glühofen},label=code:bsp2]
+    function tmp = PI(wert,T,step)
+        persistent X
+
+        if isempty(X)
+            X = 0;
+        end
+
+        X = X + wert/T*step;
+        tmp = X;
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{regler_bsp2.png}
+    \caption{Implementierung der Regler für den Glühofen}
+    \label{fig:reg_bsp2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{erg_bsp2.png}
+    \caption{Vergleich Kontinuierlicher/Diskreter Regler für den Glühofen}
+    \label{fig:bsp2}
+\end{figure}
 
 \section{Fahrradmodell}
 
