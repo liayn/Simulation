@@ -92,9 +92,57 @@ Auch hier wurde der Regler einmal als Simulink und einmal als Embedded Matlab Fu
 
 \section{Fahrradmodell}
 
-Nach einer Unstimmigkeit in der Systemgleichung des Modells haben wir uns für die einheitmäßig korrekte Gleichung nach G. Retschitzegger entschieden.
+Aufgabe war die Implementierung und Regelung eines vereinfachten Fahrradmodells (Eyckhoff, 1974).
 
-Um das Modell simulieren zu können, mussten noch eine Vielzahl von anderen Konstanten bestimmt werden. Nach einer Parameterstudie, für die zwei kontinuierliche Regler implementiert wurden, fanden wir die in \emph{koeff.m} gelisteten Parameter als gute Simulationsbasis.
+\begin{eqnarray}
+z_1 & =& Lenkausschlag \\
+z_2 & =& Fahrerneigung \\
+p & =& Fahrradneigung \\
+dmv\dot{z_1} + mv^2z_1 & = & J\ddot{p} - mhgp + (J* + h^2m)\ddot{z_2} - 1/2mgz_2 
+\end{eqnarray}
+
+In Worten bedeuted die Formel:
+
+Gyroskopisches Moment des Vorderrads + Zentrifugalmoment der Gesamtmasse= Trägheitsmoment des Fahrrads - Gravitationsmoment des Fahrrads + Trägheitsmoment des Fahrers - Gravitationsmoment des Fahrers
+
+\paragraph*{}
+Für die Parameterstudie verwenden wir realistische Werte:
+
+\begin{tabular}{ccccc}
+ g          & v         & $m_{bike}$  & $m_{biker}$    & h     \\ 
+ $9.81 m/s^2$ & $3 m/s$ & $5 kg$      & $50 kg$        & $0.9 m$   
+\end{tabular} 
+siehe \textit{koeff.m} 
+
+
+\paragraph*{}
+W\"ahrend der Studie war es wichtig zu beachten das für $z_i,z_2,p$, wegen der mehrmals gew\"ahlte Vereinfachung $sin(z_1)\approx z_1$, nur Werte im Bereich $ [ -\frac{\pi}{4},  \frac{\pi}{4}]$  angenommen werden.
+F\"ur die Simulation bedeuted dies: wenn Fahrer oder Fahrrad zu stark geneigt sind, dann ist kein realistisches Verhalten mehr zu erwarten.
+
+Die Angabe verwendet nun zwei PID Regler zur Steuerung von $z_1$ und $z_2$ um p wieder in Ausgangslage zu bringen. 
+Pers\"onlich w\"urde eine Regelung von $z_2$ abh\"angig von Lenkausschlag $z_1$ und Momentangeschwindigkeit $v$ die es vermeidet das \textit{man hinfällt}.
+Im Sinne von Je schneller ich fahre und je enger die Kurve desto mehr muss ich mich reinlegen.
+
+Bei einer kontinuerlichen Störung des Lenkauschlags $z_1$ mittels einer schwachen Sinusschwingung Amplitude $0.05 rad$ und Frequenz $0.2 Hz$, und allen Parametern der PID-Regler auf 0.0001 bleibt das Fahrrad stabil.
+Wobei sich $K_i$ im Bereich von 0.05 bis 0.0001 bewegen darf, die $K_p$ und $K_d$ sind wesentlich empfindlicher.
+Die Vereinfachung von $sin(x) = x$ für kleine x hat sich für die Parameterstudie als stark problematisch herausgestellt, da sie den Übergang zwischen etwas falschen und völlig falschen Parametern stark verkleinert.
+
+Das Ergebnis des Parameterstudie ist im großen und ganzen sch\"on gleichm\"asige St\"orungen und ganz vorsichtig den K\"orper neigen dann geht im Modell alles gut.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=\linewidth]{erg_bsp3.png}
+    \caption{Testfahrt, mit sinusartig st\"orschlingenden Lenker, \textit{siehe Fahrrad2.sim}}
+    \label{fig:bsp3}
+\end{figure}
+
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=\linewidth]{bsp3_goof.png}
+    \caption{H\"ubsche Fahrradfahrten, erzeugt durch veränderte Frequenzen und Amplituden der Störschwingungen}
+    \label{fig:bsp3goof}
+\end{figure}
 
 
 

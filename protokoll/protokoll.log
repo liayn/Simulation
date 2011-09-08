@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.6.13)  8 SEP 2011 18:38
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.6.13)  8 SEP 2011 22:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -467,29 +467,37 @@ File: regler_bsp2.png Graphic file (type png)
 [3] <erg_bsp2.png, id=23, 1377.145pt x 716.6775pt>
 File: erg_bsp2.png Graphic file (type png)
  <use erg_bsp2.png> [4 <./regler_bsp2.png (PNG copy)> <./erg_bsp2.png (PNG copy
-)>] (./protokoll.aux) ) 
+)>]
+<erg_bsp3.png, id=28, 663.98062pt x 212.29312pt>
+File: erg_bsp3.png Graphic file (type png)
+ <use erg_bsp3.png>
+<bsp3_goof.png, id=29, 513.41812pt x 201.00093pt>
+File: bsp3_goof.png Graphic file (type png)
+ <use bsp3_goof.png> [5 <./erg_bsp3.png (PNG copy)>] [6 <./bsp3_goof.png (PNG c
+opy)>] (./protokoll.aux) ) 
 Here is how much of TeX's memory you used:
- 4102 strings out of 493747
- 53464 string characters out of 3143546
- 144213 words of memory out of 3000000
- 7346 multiletter control sequences out of 15000+200000
+ 4114 strings out of 493747
+ 53651 string characters out of 3143546
+ 144229 words of memory out of 3000000
+ 7356 multiletter control sequences out of 15000+200000
  7934 words of font info for 28 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 37i,6n,40p,726b,2110s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2010/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmbx10.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx12.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi7.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr12.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr17.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/
+ 37i,8n,40p,726b,2110s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2010/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi7.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr17.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr7.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti10.pfb>
-Output written on protokoll.pdf (4 pages, 200155 bytes).
+Output written on protokoll.pdf (6 pages, 238611 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 68 PDF objects out of 1000 (max. 8388607)
+ 44 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
