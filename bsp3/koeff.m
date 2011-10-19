@@ -15,7 +15,10 @@ Ki = [0.05 0.05]
 Kp = [0.005 0.005]
 Kd = [0.00001 0.00001]
 
-tau = 0.2
+tau = 0.01
+               % P     I     D    Regler
+H1 = pidDiscret(0.005,0.05,0.00001,tau); %Lenker
+H2 = pidDiscret(0.005,0.05,0.00001,tau); %Fahrer
 
 % constants in the model
 

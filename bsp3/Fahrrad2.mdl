@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.32"
+    ComputedModelVersion    "1.33"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,9 +24,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "dpara"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Sep 08 19:49:57 2011"
-  RTWModifiedTimeStamp	  237412188
-  ModelVersionFormat	  "1.%<AutoIncrement:32>"
+  LastModifiedDate	  "Thu Sep 08 23:57:17 2011"
+  RTWModifiedTimeStamp	  237426104
+  ModelVersionFormat	  "1.%<AutoIncrement:33>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -580,6 +580,15 @@ Model {
       LinearizePole	      "inf"
     }
     Block {
+      BlockType		      DiscreteFilter
+      Numerator		      "[1]"
+      Denominator	      "[1 2]"
+      SampleTime	      "1"
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+      Realization	      "auto"
+    }
+    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -748,19 +757,6 @@ Model {
       OutputSignalType	      "auto"
       SampleTime	      "-1"
     }
-    Block {
-      BlockType		      VariableTransportDelay
-      VariableDelayType	      "Variable time delay"
-      MaximumDelay	      "1"
-      InitialOutput	      "0"
-      MaximumPoints	      "1024"
-      FixedBuffer	      off
-      ZeroDelay		      off
-      TransDelayFeedthrough   off
-      PadeOrder		      "0"
-      AbsoluteTolerance	      "auto"
-      ContinuousStateAttributes	"''"
-    }
   }
   System {
     Name		    "Fahrrad2"
@@ -781,8 +777,8 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant"
-      Position		      [85, 45, 115, 75]
-      Value		      "0.1"
+      Position		      [75, 175, 105, 205]
+      Value		      "0.0"
       OutDataType	      "sfix(16)"
       OutScaling	      "2^0"
     }
@@ -807,7 +803,7 @@ Model {
       System {
 	Name			"Fahrrad"
 	Location		[489, 101, 1233, 576]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	154
 	ScreenColor		"white"
@@ -1275,9 +1271,9 @@ Model {
     }
     Block {
       BlockType		      SubSystem
-      Name		      "PID z1"
+      Name		      "PID-Regler Diskr"
       Ports		      [1, 1]
-      Position		      [220, 134, 320, 176]
+      Position		      [215, 134, 315, 176]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1285,21 +1281,9 @@ Model {
       Opaque		      off
       RequestExecContextInheritance off
       MaskHideContents	      off
-      MaskPromptString	      "Koeffizient index"
-      MaskStyleString	      "edit"
-      MaskTunableValueString  "on"
-      MaskEnableString	      "on"
-      MaskVisibilityString    "on"
-      MaskToolTipString	      "on"
-      MaskVariables	      "i=@1;"
-      MaskIconFrame	      on
-      MaskIconOpaque	      on
-      MaskIconRotate	      "none"
-      MaskIconUnits	      "autoscale"
-      MaskValueString	      "1"
       System {
-	Name			"PID z1"
-	Location		[529, 319, 1144, 732]
+	Name			"PID-Regler Diskr"
+	Location		[489, 101, 1249, 576]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1314,32 +1298,30 @@ Model {
 	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
-	  Name			  "Ist"
-	  Position		  [60, 133, 90, 147]
+	  Name			  "Istwert"
+	  Position		  [50, 103, 80, 117]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  "Constant"
-	  Position		  [60, 180, 90, 210]
-	  Value			  "tau"
+	  Position		  [50, 135, 80, 165]
+	  Value			  "0.0"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
 	}
 	Block {
-	  BlockType		  Derivative
-	  Name			  "Derivative"
-	  Position		  [335, 95, 365, 125]
-	}
-	Block {
-	  BlockType		  Integrator
-	  Name			  "Integrator"
-	  Ports			  [1, 1]
-	  Position		  [335, 180, 365, 210]
+	  BlockType		  DiscreteFilter
+	  Name			  "Discrete Filter"
+	  Position		  [310, 79, 525, 141]
+	  Numerator		  "cell2mat(H1.num)"
+	  Denominator		  "cell2mat(H1.den)"
+	  SampleTime		  "H1.Ts"
 	}
 	Block {
 	  BlockType		  Gain
-	  Name			  "Kd"
-	  Position		  [440, 86, 495, 134]
-	  Gain			  "Kd(i)"
+	  Name			  "Gain"
+	  Position		  [175, 94, 255, 126]
 	  ParameterDataTypeMode	  "Inherit via internal rule"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeMode	  "Inherit via internal rule"
@@ -1347,45 +1329,17 @@ Model {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  Gain
-	  Name			  "Ki"
-	  Position		  [440, 173, 495, 217]
-	  Gain			  "Ki(i)"
-	  ParameterDataTypeMode	  "Inherit via internal rule"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
-	  OutDataTypeMode	  "Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Kp"
-	  Position		  [440, 19, 500, 61]
-	  Gain			  "Kp(i)"
-	  ParameterDataTypeMode	  "Inherit via internal rule"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
-	  OutDataTypeMode	  "Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  Position		  [635, 95, 665, 125]
+	  UpperLimit		  "10"
+	  LowerLimit		  "0"
 	}
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum"
-	  Ports			  [3, 1]
-	  Position		  [515, 100, 535, 120]
-	  ShowName		  off
-	  IconShape		  "round"
-	  Inputs		  "+++"
-	  InputSameDT		  off
-	  OutDataTypeMode	  "Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Sum1"
 	  Ports			  [2, 1]
-	  Position		  [240, 100, 260, 120]
+	  Position		  [120, 100, 140, 120]
 	  ShowName		  off
 	  IconShape		  "round"
 	  Inputs		  "|-+"
@@ -1395,114 +1349,55 @@ Model {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  VariableTransportDelay
-	  Name			  "Variable\nTime Delay"
-	  Position		  [145, 132, 175, 163]
-	  MaximumDelay		  "10"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "w"
-	  Position		  [105, 40, 135, 70]
-	  Value			  "0"
-	}
-	Block {
 	  BlockType		  Outport
-	  Name			  "u"
-	  Position		  [565, 103, 595, 117]
+	  Name			  "Stellgröße"
+	  Position		  [710, 103, 740, 117]
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  SrcBlock		  "Kp"
+	  SrcBlock		  "Istwert"
 	  SrcPort		  1
-	  Points		  [20, 0]
 	  DstBlock		  "Sum"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Sum"
-	  SrcPort		  1
-	  DstBlock		  "u"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Ist"
-	  SrcPort		  1
-	  DstBlock		  "Variable\nTime Delay"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Constant"
 	  SrcPort		  1
-	  Points		  [20, 0; 0, -40]
-	  DstBlock		  "Variable\nTime Delay"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Integrator"
-	  SrcPort		  1
-	  DstBlock		  "Ki"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Derivative"
-	  SrcPort		  1
-	  DstBlock		  "Kd"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Kd"
-	  SrcPort		  1
+	  Points		  [45, 0]
 	  DstBlock		  "Sum"
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "Ki"
+	  SrcBlock		  "Sum"
 	  SrcPort		  1
-	  Points		  [25, 0]
-	  DstBlock		  "Sum"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "w"
-	  SrcPort		  1
-	  Points		  [40, 0; 0, 55]
-	  DstBlock		  "Sum1"
+	  DstBlock		  "Gain"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Variable\nTime Delay"
+	  SrcBlock		  "Gain"
 	  SrcPort		  1
-	  Points		  [70, 0]
-	  DstBlock		  "Sum1"
-	  DstPort		  2
+	  DstBlock		  "Discrete Filter"
+	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Sum1"
+	  SrcBlock		  "Saturation"
 	  SrcPort		  1
-	  Points		  [25, 0]
-	  Branch {
-	    DstBlock		    "Derivative"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -70]
-	    DstBlock		    "Kp"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, 85]
-	    DstBlock		    "Integrator"
-	    DstPort		    1
-	  }
+	  DstBlock		  "Stellgröße"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Discrete Filter"
+	  SrcPort		  1
+	  DstBlock		  "Saturation"
+	  DstPort		  1
 	}
       }
     }
     Block {
       BlockType		      SubSystem
-      Name		      "PID z2"
+      Name		      "PID-Regler Diskr1"
       Ports		      [1, 1]
-      Position		      [220, 199, 320, 241]
+      Position		      [215, 199, 315, 241]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1510,18 +1405,6 @@ Model {
       Opaque		      off
       RequestExecContextInheritance off
       MaskHideContents	      off
-      MaskPromptString	      "Koeffizient index"
-      MaskStyleString	      "edit"
-      MaskTunableValueString  "on"
-      MaskEnableString	      "on"
-      MaskVisibilityString    "on"
-      MaskToolTipString	      "on"
-      MaskVariables	      "i=@1;"
-      MaskIconFrame	      on
-      MaskIconOpaque	      on
-      MaskIconRotate	      "none"
-      MaskIconUnits	      "autoscale"
-      MaskValueString	      "2"
       Port {
 	PortNumber		1
 	Name			"z2"
@@ -1529,8 +1412,8 @@ Model {
 	DataLoggingNameMode	"SignalName"
       }
       System {
-	Name			"PID z2"
-	Location		[529, 319, 1144, 732]
+	Name			"PID-Regler Diskr1"
+	Location		[489, 101, 1249, 576]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1545,32 +1428,30 @@ Model {
 	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
-	  Name			  "Ist"
-	  Position		  [60, 133, 90, 147]
+	  Name			  "Istwert"
+	  Position		  [50, 103, 80, 117]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  "Constant"
-	  Position		  [60, 180, 90, 210]
-	  Value			  "tau"
+	  Position		  [50, 135, 80, 165]
+	  Value			  "0.0"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
 	}
 	Block {
-	  BlockType		  Derivative
-	  Name			  "Derivative"
-	  Position		  [335, 95, 365, 125]
-	}
-	Block {
-	  BlockType		  Integrator
-	  Name			  "Integrator"
-	  Ports			  [1, 1]
-	  Position		  [335, 180, 365, 210]
+	  BlockType		  DiscreteFilter
+	  Name			  "Discrete Filter"
+	  Position		  [310, 79, 525, 141]
+	  Numerator		  "cell2mat(H2.num)"
+	  Denominator		  "cell2mat(H2.den)"
+	  SampleTime		  "H2.Ts"
 	}
 	Block {
 	  BlockType		  Gain
-	  Name			  "Kd"
-	  Position		  [440, 86, 495, 134]
-	  Gain			  "Kd(i)"
+	  Name			  "Gain"
+	  Position		  [175, 94, 255, 126]
 	  ParameterDataTypeMode	  "Inherit via internal rule"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeMode	  "Inherit via internal rule"
@@ -1578,45 +1459,17 @@ Model {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  Gain
-	  Name			  "Ki"
-	  Position		  [440, 173, 495, 217]
-	  Gain			  "Ki(i)"
-	  ParameterDataTypeMode	  "Inherit via internal rule"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
-	  OutDataTypeMode	  "Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Kp"
-	  Position		  [440, 19, 500, 61]
-	  Gain			  "Kp(i)"
-	  ParameterDataTypeMode	  "Inherit via internal rule"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
-	  OutDataTypeMode	  "Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  Position		  [635, 95, 665, 125]
+	  UpperLimit		  "10"
+	  LowerLimit		  "0"
 	}
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum"
-	  Ports			  [3, 1]
-	  Position		  [515, 100, 535, 120]
-	  ShowName		  off
-	  IconShape		  "round"
-	  Inputs		  "+++"
-	  InputSameDT		  off
-	  OutDataTypeMode	  "Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Sum1"
 	  Ports			  [2, 1]
-	  Position		  [240, 100, 260, 120]
+	  Position		  [120, 100, 140, 120]
 	  ShowName		  off
 	  IconShape		  "round"
 	  Inputs		  "|-+"
@@ -1626,105 +1479,46 @@ Model {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  VariableTransportDelay
-	  Name			  "Variable\nTime Delay"
-	  Position		  [145, 132, 175, 163]
-	  MaximumDelay		  "10"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "w"
-	  Position		  [105, 40, 135, 70]
-	  Value			  "0"
-	}
-	Block {
 	  BlockType		  Outport
-	  Name			  "u"
-	  Position		  [565, 103, 595, 117]
+	  Name			  "Stellgröße"
+	  Position		  [710, 103, 740, 117]
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  SrcBlock		  "Sum1"
-	  SrcPort		  1
-	  Points		  [25, 0]
-	  Branch {
-	    Points		    [0, 85]
-	    DstBlock		    "Integrator"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -70]
-	    DstBlock		    "Kp"
-	    DstPort		    1
-	  }
-	  Branch {
-	    DstBlock		    "Derivative"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "Variable\nTime Delay"
-	  SrcPort		  1
-	  Points		  [70, 0]
-	  DstBlock		  "Sum1"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "w"
-	  SrcPort		  1
-	  Points		  [40, 0; 0, 55]
-	  DstBlock		  "Sum1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Ki"
-	  SrcPort		  1
-	  Points		  [25, 0]
-	  DstBlock		  "Sum"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "Kd"
+	  SrcBlock		  "Istwert"
 	  SrcPort		  1
 	  DstBlock		  "Sum"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Derivative"
-	  SrcPort		  1
-	  DstBlock		  "Kd"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Integrator"
-	  SrcPort		  1
-	  DstBlock		  "Ki"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Constant"
 	  SrcPort		  1
-	  Points		  [20, 0; 0, -40]
-	  DstBlock		  "Variable\nTime Delay"
+	  Points		  [45, 0]
+	  DstBlock		  "Sum"
 	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Ist"
-	  SrcPort		  1
-	  DstBlock		  "Variable\nTime Delay"
-	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Sum"
 	  SrcPort		  1
-	  DstBlock		  "u"
+	  DstBlock		  "Gain"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Kp"
+	  SrcBlock		  "Gain"
 	  SrcPort		  1
-	  Points		  [20, 0]
-	  DstBlock		  "Sum"
+	  DstBlock		  "Discrete Filter"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  DstBlock		  "Stellgröße"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Discrete Filter"
+	  SrcPort		  1
+	  DstBlock		  "Saturation"
 	  DstPort		  1
 	}
       }
@@ -1746,8 +1540,8 @@ Model {
 	axes3			"%<SignalLabel>"
       }
       TimeRange		      "10"
-      YMin		      "-0.03~-2~-0.1"
-      YMax		      "0.05~2~0.1"
+      YMin		      "0.01~-2~-0.1"
+      YMax		      "0.06~2~0.1"
       SaveName		      "ScopeData1"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
@@ -1827,11 +1621,11 @@ Model {
 	Points			[0, 90; -350, 0; 0, -55]
 	Branch {
 	  Points		  [0, -65]
-	  DstBlock		  "PID z1"
+	  DstBlock		  "PID-Regler Diskr"
 	  DstPort		  1
 	}
 	Branch {
-	  DstBlock		  "PID z2"
+	  DstBlock		  "PID-Regler Diskr1"
 	  DstPort		  1
 	}
       }
@@ -1884,9 +1678,9 @@ Model {
     Line {
       Name		      "z2"
       Labels		      [0, 0]
-      SrcBlock		      "PID z2"
+      SrcBlock		      "PID-Regler Diskr1"
       SrcPort		      1
-      Points		      [70, 0]
+      Points		      [75, 0]
       Branch {
 	DstBlock		"Fahrrad"
 	DstPort			2
@@ -1922,7 +1716,7 @@ Model {
       }
     }
     Line {
-      SrcBlock		      "PID z1"
+      SrcBlock		      "PID-Regler Diskr"
       SrcPort		      1
       DstBlock		      "Sum1"
       DstPort		      2
